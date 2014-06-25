@@ -10,3 +10,12 @@ User Stories:
 * As a user, I want stats about the player who is being suggested.
 * As a user, I want a small selection for my next pick.
 * As a user, I do not want to navagate away from the page as the draft is underway.
+* As a user, I want to receive an email with my draft recap.
+
+
+
+Logic in drafting:
+========
+
+* Possible bye-week trouble
+* Target one bye-week strategy
