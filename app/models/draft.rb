@@ -28,6 +28,10 @@ class Draft
 		end
 	end
 
+	def change_round_number(number_of_rounds)
+		@rounds = number_of_rounds
+	end
+
 	def order_draft
 		@rounds.times do |number|
 			@teams.each do |team|

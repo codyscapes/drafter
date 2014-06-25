@@ -24,6 +24,15 @@ RSpec.describe Draft, :type => :model do
 		end
 	end
 
+	describe 'change_round_number' do
+		it 'should let the user change the number of rounds in the draft' do
+			draft = Draft.create(2, "snake")
+			draft.change_round_number(15)
+			draft.rounds.should eq 15
+		end
+	end
+
+
 	describe 'start' do
 
 		# it 'creates the draft order if the draft type is snake' do
