@@ -8,7 +8,7 @@ class Team
 
 	def initialize(number)
 		@team_name = "Team " + number.to_s
-		@draft_position = 0
+		@draft_position = number
 		@drafted_players = []
 	end
 

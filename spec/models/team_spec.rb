@@ -11,9 +11,9 @@ RSpec.describe Team, :type => :model do
 		team.drafted_players.should eq []
 	end
 
-	it 'should have an empty draft position with initialized' do
+	it 'should have the same draft number as the team number when initialized' do
 		team = Team.create(3)
-		team.draft_position.should eq 0
+		team.draft_position.should eq 3
 	end
 
 	it 'should let the user change the draft position of a team' do
