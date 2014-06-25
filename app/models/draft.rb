@@ -22,7 +22,7 @@ class Draft
 	end
 
 	def start
-		if @type = 'snake'
+		if @type == 'snake'
 			@order = []
 			self.order_draft()
 		end
@@ -32,14 +32,32 @@ class Draft
 		@rounds = number_of_rounds
 	end
 
-	def order_draft
+	def order_draft()
 		@rounds.times do |number|
-			@teams.each do |team|
-				if number.even
+			if number.even?
+				@teams.each do |team|
+					@order << team
+				end
+			end
+
+			if number.odd?
+				@teams.reverse.each do |team|
 					@order << team
 				end
 			end
 		end
 	end
 
+	def team_picks(team)
+		@picks = []
+
+		@order.each_with_index do |pick, index|
+			if pick == team
+				@picks << index
+			end
+		end
+
+		@picks
+
+	end
 end

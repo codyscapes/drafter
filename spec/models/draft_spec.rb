@@ -32,13 +32,19 @@ RSpec.describe Draft, :type => :model do
 		end
 	end
 
-
 	describe 'start' do
+		it 'creates the draft order if the draft type is snake' do
+			draft = Draft.create(8, 'snake')
+			draft.start()
+			draft.team_picks(draft.teams[0]).should eq [0,15,16,31,32,47,48,63,64,79,80,95,96,111,112,127]
+		end
+	end
 
-		# it 'creates the draft order if the draft type is snake' do
-		# 	draft = Draft.create(8, 'snake')
-		# 	draft.start()
-		# 	draft.order.index(draft.teams[0]).should eq [0,15,16,31,32,47,48,63,64,79,80,95,96,111,112,127]
-		# end
+		describe 'team_picks' do
+		it 'returns the picks of a given team' do
+			draft = Draft.create(8, 'snake')
+			draft.start()
+			draft.team_picks(draft.teams[1]).should eq [1,14,17,30,33,46,49,62,65,78,81,94,97,110,113,126]
+		end
 	end
 end
