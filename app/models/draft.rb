@@ -1,12 +1,16 @@
 class Draft
 
-	def Draft.create(number_of_teams)
-		draft = Draft.new(number_of_teams)
+	attr_reader :type
+
+	def Draft.create(number_of_teams, draft_type)
+		draft = Draft.new(number_of_teams, draft_type)
 		draft
 	end
 
-	def initialize(number_of_teams)
+	def initialize(number_of_teams, draft_type)
 		@teams = []
+
+		@type = draft_type
 
 		print number_of_teams
 
@@ -18,5 +22,9 @@ class Draft
 	def teams
 		@teams
 	end
+
+	# def turn
+	# 	if draft_type
+	# end
 
 end
