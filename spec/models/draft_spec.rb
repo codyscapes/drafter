@@ -8,6 +8,11 @@ RSpec.describe Draft, :type => :model do
 			draft.teams.length.should eq 12
 		end
 
+		it 'should initialize with a default 16 rounds' do
+			draft = Draft.create(12, "snake")
+			draft.rounds.should eq 16
+		end
+
 		it 'should initialize with a draft type (snake or auction)' do
 			draft = Draft.create(2, "snake")
 			draft.type.should eq "snake"
