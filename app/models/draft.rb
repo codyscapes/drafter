@@ -60,4 +60,9 @@ class Draft
 		@picks
 
 	end
+
+	def pick(player)
+		@order[0].drafted_players << player
+		@order.shift
+	end
 end
