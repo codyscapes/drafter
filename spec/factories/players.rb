@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :player do
 		name 'Cam Newton'
     team 'Carolina Panthers'
+    position 'QB'
     points_2013 260
     beer_value 1.7
     bye_week 12
