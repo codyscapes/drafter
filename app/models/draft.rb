@@ -1,6 +1,6 @@
 class Draft
 
-	attr_reader :type, :order, :rounds
+	attr_reader :type, :order, :rounds, :players
 
 	def Draft.create(number_of_teams, draft_type)
 		draft = Draft.new(number_of_teams, draft_type)
@@ -11,10 +11,16 @@ class Draft
 		@teams = []
 		@rounds = 16
 		@type = draft_type
+		@players = []
 
 		1.upto(number_of_teams) do |team_number|
 			@teams << Team.create(team_number)
 		end
+
+		Player.all.find_each do |player|
+			@players << player
+		end
+
 	end
 
 	def teams
@@ -64,5 +70,11 @@ class Draft
 	def pick(player)
 		@order[0].drafted_players << player
 		@order.shift
+	end
+
+	def best_available
+		current_team = @order[0]
+		# remaining_players = Players.all
+		# remaining_players
 	end
 end

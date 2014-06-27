@@ -22,6 +22,13 @@ RSpec.describe Draft, :type => :model do
 			draft = Draft.create(2, "snake")
 			draft.teams[1].team_name.should eq "Team 2"
 		end
+
+		it 'should initialize with a list of available players' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			draft = Draft.create(2, "snake")
+			draft.players.should eq [cam, reggie]
+		end
 	end
 
 	describe 'change_round_number' do
@@ -65,4 +72,15 @@ RSpec.describe Draft, :type => :model do
 			draft.order[0].should eq draft.teams[1]
 		end
 	end
+
+	# describe 'best_available' do
+	# 	it 'should tell the drafting team the best best player available in the draft' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		draft = Draft.create(8, 'snake')
+	# 		draft.start()
+	# 		draft.pick(cam)
+	# 		draft.best_available.should eq reggie
+	# 	end
+	# end
 end
