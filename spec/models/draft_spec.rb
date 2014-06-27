@@ -71,16 +71,24 @@ RSpec.describe Draft, :type => :model do
 			draft.pick(player)
 			draft.order[0].should eq draft.teams[1]
 		end
+
+		it 'removes the player selected from the players array.' do
+			player = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			draft = Draft.create(8, 'snake')
+			draft.start()
+			draft.pick(player)
+			draft.players.should eq [reggie]
+		end
 	end
 
-	# describe 'best_available' do
-	# 	it 'should tell the drafting team the best best player available in the draft' do
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		draft = Draft.create(8, 'snake')
-	# 		draft.start()
-	# 		draft.pick(cam)
-	# 		draft.best_available.should eq reggie
-	# 	end
-	# end
+	describe 'best_available' do
+		it 'should tell the drafting team the best best player available in the draft' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			draft = Draft.create(8, 'snake')
+			draft.start()
+			draft.best_available("beer_value").should eq reggie
+		end
+	end
 end

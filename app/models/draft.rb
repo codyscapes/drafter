@@ -70,11 +70,23 @@ class Draft
 	def pick(player)
 		@order[0].drafted_players << player
 		@order.shift
+		@players.delete(player)
 	end
 
-	def best_available
+	def best_available(ranking_method)
 		current_team = @order[0]
-		# remaining_players = Players.all
-		# remaining_players
+
+		best_player = @players[0]
+
+		if ranking_method == "beer_value"
+			@players.each do |player|
+				if player.beer_value > best_player.beer_value
+					best_player = player
+				end
+			end
+		end
+
+		best_player
+
 	end
 end
