@@ -21,5 +21,16 @@ FactoryGirl.define do
 	    adp 30
 	    tier 6
 	  end
+
+	    factory :jamaal_charles do
+	  	name 'Jamaal Charles'
+	    team 'Kansas City Chiefs'
+	    position 'HB'
+	    points_2013 296
+	    beer_value 8.8
+	    bye_week 6
+	    adp 2
+	    tier 1
+	  end
 	end
 end

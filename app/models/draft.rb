@@ -85,8 +85,6 @@ class Draft
 				end
 			end
 		end
-
 		best_player
-
 	end
 end
