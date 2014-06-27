@@ -10,5 +10,16 @@ FactoryGirl.define do
     bye_week 12
     adp 84
     tier 3
-  end
+
+  	factory :reggie_bush do
+	  	name 'Reggie Bush'
+	    team 'Detroit Lions'
+	    position 'HB'
+	    points_2013 175
+	    beer_value 2.5
+	    bye_week 9
+	    adp 30
+	    tier 6
+	  end
+	end
 end
