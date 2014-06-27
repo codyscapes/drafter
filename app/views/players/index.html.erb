@@ -3,8 +3,11 @@
 <% @players.each do |player| %>
 	<ul>
 		<li>
-			<%= player.name %>
+			<%= player.name %></br>
 		</li>
+			<p class='under_player_options'> Remove Player | Edit Player | </p>
+
 	</ul>
 <% end %>
 
+<a href="/players/new"><button>Create a New Player</button></a>

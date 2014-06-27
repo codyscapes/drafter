@@ -92,7 +92,7 @@ RSpec.describe Draft, :type => :model do
 			draft.best_available("beer_value").should eq jamaal
 		end
 
-		it 'should tell the drafting team the best player available in the draft and not show a player that has already been chosen.' do
+		it 'should tell the drafting team the best player available in the draft and not show a player that has already been drafted.' do
 			cam = FactoryGirl.create(:player)
 			reggie = FactoryGirl.create(:reggie_bush)
 			jamaal = FactoryGirl.create(:jamaal_charles)

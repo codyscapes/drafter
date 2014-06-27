@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.under_player_options {
+	font-size: 12px;
+	margin-top: 0px;
+}
+
+li {
+	font-weight: bold;
+}
