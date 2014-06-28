@@ -117,4 +117,18 @@ RSpec.describe Draft, :type => :model do
 			draft.second_best_available("beer_value").should eq reggie
 		end
 	end
+
+	describe 'third_best_available' do
+		it 'should return the third best player available in the draft' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			draft = Draft.create(8, 'snake')
+			draft.start()
+			draft.pick(jamaal)
+			draft.third_best_available("beer_value").should eq cam
+		end
+	end
 end
