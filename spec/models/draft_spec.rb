@@ -95,11 +95,26 @@ RSpec.describe Draft, :type => :model do
 		it 'should tell the drafting team the best player available in the draft and not show a player that has already been drafted.' do
 			cam = FactoryGirl.create(:player)
 			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
 			jamaal = FactoryGirl.create(:jamaal_charles)
 			draft = Draft.create(8, 'snake')
 			draft.start()
 			draft.pick(jamaal)
-			draft.best_available("beer_value").should eq reggie
+			draft.best_available("beer_value").should eq forte
+		end
+	end
+
+	describe 'second_best_available' do
+		it 'should return the second best player available in the draft' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			draft = Draft.create(8, 'snake')
+			draft.start()
+			draft.pick(jamaal)
+			draft.second_best_available("beer_value").should eq reggie
 		end
 	end
 end

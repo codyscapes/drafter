@@ -87,4 +87,21 @@ class Draft
 		end
 		best_player
 	end
+
+	def second_best_available(ranking_method)
+		current_team = @order[0]
+		best_player = self.best_available('beer_value')
+		second_best_player = @players[0]
+
+		if ranking_method == 'beer_value'
+			@players.reject{|element| element == self.best_available('beer_value')}.each do |player|
+				if player.beer_value > second_best_player.beer_value
+					second_best_player = player
+				end
+			end
+		end
+
+		second_best_player
+
+	end
 end

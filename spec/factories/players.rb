@@ -16,7 +16,7 @@ FactoryGirl.define do
 	    team 'Detroit Lions'
 	    position 'HB'
 	    points_2013 175
-	    beer_value 2.5
+	    beer_value 7
 	    bye_week 9
 	    adp 30
 	    tier 6
@@ -27,10 +27,33 @@ FactoryGirl.define do
 	    team 'Kansas City Chiefs'
 	    position 'HB'
 	    points_2013 296
-	    beer_value 8.8
+	    beer_value 9
 	    bye_week 6
 	    adp 2
 	    tier 1
 	  end
+
+	    factory :matt_forte do
+	  	name 'Matt Forte'
+	    team 'Chicago Bears'
+	    position 'HB'
+	    points_2013 189
+	    beer_value 8
+	    bye_week 4
+	    adp 4
+	    tier 1
+	  end
+
+	  	factory :ray_rice do
+	  	name "Ray Rice"
+	  	team 'Baltimore Ravens'
+	  	position 'HB'
+	  	points_2013 107
+	  	beer_value 1
+	  	bye_week 5
+	  	adp 88
+	  	tier 8
+	  end
+
 	end
 end
