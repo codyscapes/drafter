@@ -120,6 +120,7 @@ RSpec.describe Draft, :type => :model do
 
 	describe 'third_best_available' do
 		it 'should return the third best player available in the draft' do
+			dud = FactoryGirl.create(:dud)
 			cam = FactoryGirl.create(:player)
 			reggie = FactoryGirl.create(:reggie_bush)
 			jamaal = FactoryGirl.create(:jamaal_charles)
@@ -129,6 +130,20 @@ RSpec.describe Draft, :type => :model do
 			draft.start()
 			draft.pick(jamaal)
 			draft.third_best_available("beer_value").should eq cam
+		end
+	end
+
+	describe 'draft_suggestions' do
+		it 'should return an array of the three best players available in the draft' do
+			dud = FactoryGirl.create(:dud)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			draft = Draft.create(8, 'snake')
+			draft.start()
+			draft.draft_suggestions("beer_value").should eq [jamaal, forte, reggie]
 		end
 	end
 end

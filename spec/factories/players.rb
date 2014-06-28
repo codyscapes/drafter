@@ -55,5 +55,16 @@ FactoryGirl.define do
 	  	tier 8
 	  end
 
+	  	factory :dud do
+	  	name 'Aaron Hernandez'
+	  	team 'NY State'
+	  	position 'WR'
+	  	points_2013 0
+	  	beer_value -99
+	  	bye_week 2
+	  	adp 999
+	  	tier 999
+	  end
+
 	end
 end
