@@ -5,7 +5,7 @@
 		<li>
 			<%= player.name %></br>
 		</li>
-			<p class='under_player_options'> Remove Player | Edit Player | </p>
+			<p class='under_player_options'> <%= link_to 'Remove Player', player, method: :delete, data: { confirm: 'Are you sure?' } %> | Edit Player | </p>
 
 	</ul>
 <% end %>
