@@ -7,6 +7,16 @@ class PlayersController < ApplicationController
   	@player = Player.find_by(params[:id])
   end
 
+  def edit
+  	@player = Player.find_by(params[:name])
+	end
+
+	def update
+    @player = Player.find(params[:id])
+    @player.update(player_params)
+    redirect_to players_path
+  end
+
 	def new
     @player = Player.new
     render('new.html.erb')

@@ -3,10 +3,9 @@
 <% @players.each do |player| %>
 	<ul>
 		<li>
-			<%= player.name %></br>
+			<%= link_to player.name, @player %></br>
 		</li>
-			<p class='under_player_options'> <%= link_to 'Remove Player', player, method: :delete, data: { confirm: 'Are you sure?' } %> | Edit Player | </p>
-
+			<p class='under_player_options'> <%= link_to 'Remove Player', player, method: :delete, data: { confirm: 'Are you sure?' } %> ||| <%= link_to 'Edit Player', edit_player_path(player) %> </p>
 	</ul>
 <% end %>
 
