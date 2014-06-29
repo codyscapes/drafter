@@ -27,3 +27,10 @@ Logic in drafting:
 
 * Possible bye-week trouble
 * Target one bye-week strategy
+
+BUGS
+====
+
+* Edit player not showing correct player
+* Best available player not working in Rails
+* Second best available player not working in Rails
