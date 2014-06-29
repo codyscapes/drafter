@@ -1,5 +1,6 @@
 class DraftsController < ApplicationController
   def index
+  	@player = Player.all
   end
 
   def show

@@ -20,6 +20,47 @@
 	margin-top: 0px;
 }
 
-li {
-	font-weight: bold;
+.col-md-7 {
+	outline: 2px solid black;
 }
+
+.recommendations {
+	outline: 2px solid black;
+	height: 300px;
+}
+
+.master_list {
+	outline: 2px solid black;
+	height: 800px;
+}
+
+.top_header {
+	outline: 2px solid black;
+	height: 50px;
+}
+
+.roster {
+	outline: 2px solid black;
+	height: 300px;
+}
+
+.bottom_footer {
+	outline: 2px solid black;
+	height: 30px;
+}
+
+.position_tracking {
+	height: 500px;
+	outline: 2px solid black;
+}
+
+.under_roster {
+	height: 500px;
+	outline: 2px solid black;
+}
+
+.remaining {
+	outline: 1px solid black;
+	height: 500px;
+}
+
