@@ -65,6 +65,5 @@ FactoryGirl.define do
 	  	adp 999
 	  	tier 999
 	  end
-
 	end
 end
