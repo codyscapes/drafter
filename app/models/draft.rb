@@ -74,7 +74,7 @@ class Draft
 	end
 
 	def best_available(ranking_method)
-		current_team = @order[0]
+		# current_team = @order[0]
 
 		best_player = @players[0]
 
@@ -89,7 +89,7 @@ class Draft
 	end
 
 	def second_best_available(ranking_method)
-		current_team = @order[0]
+		# current_team = @order[0]
 
 		if ranking_method == 'beer_value'
 			best_player = self.best_available('beer_value')

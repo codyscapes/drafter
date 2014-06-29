@@ -31,12 +31,12 @@
 
 .master_list {
 	outline: 2px solid black;
-	height: 800px;
+	height: 650px;
 }
 
 .top_header {
 	outline: 2px solid black;
-	height: 50px;
+	height: 75px;
 }
 
 .roster {
@@ -50,17 +50,22 @@
 }
 
 .position_tracking {
-	height: 500px;
+	height: 350px;
 	outline: 2px solid black;
 }
 
 .under_roster {
-	height: 500px;
+	height: 350px;
 	outline: 2px solid black;
 }
 
 .remaining {
 	outline: 1px solid black;
-	height: 500px;
+	height: 350px;
 }
 
+.top_choices {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}

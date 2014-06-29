@@ -1,8 +1,23 @@
 
     <div class='row top_header'>
       <div class='col-md-12'>
-	        <p> This is where the header will be.</p>
-	        <p> It will contian links to change league settings among other things.</p>
+      	<div class='row'>
+      		<div class='col-md-4'>
+      			<p class='top_choices'> QBs </p>
+      			<p class='top_choices'> RBs </p>
+      			<p class='top_choices'> WRs </p>
+      		</div>
+      		<div class='col-md-4'>
+      			<p class='top_choices'> DRAFT # </p>
+      			<p class='top_choices'> TEAMS </p>
+      			<p class='top_choices'> EXPERT </p>
+      		</div>
+      		<div class='col-md-4'>
+      			<p class='top_choices'> PPR </p>
+      			<p class='top_choices'> PPC </p>
+      			<p class='top_choices'> PPTD </p>
+      		</div>
+      	</div>
       </div>
     </div>
 
@@ -15,9 +30,9 @@
         <%end%>
       </div>
       <div class='col-md-7'>
+
         <div class='recommendations'>
-          <p>Here is where will put player recommendations.</p>
-          <p>Each player will come in as an object with a picture.  A maximum of four players will be in this box.</p>
+        	<p> <%= @draft.best_available('beer_sheets').name %> </p>
         </div>
 
         <div class='position_tracking'>
