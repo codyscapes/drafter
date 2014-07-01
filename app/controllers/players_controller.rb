@@ -4,11 +4,11 @@ class PlayersController < ApplicationController
   end
 
   def show
-  	@player = Player.find_by(params[:id])
+  	@player = Player.find(params[:id])
   end
 
   def edit
-  	@player = Player.find_by(params[:id])
+  	@player = Player.find(params[:id])
 	end
 
 	def update
@@ -37,7 +37,7 @@ class PlayersController < ApplicationController
 private
 
   def player_params
-    params.require(:player).permit(:name, :team, :points_2013, :bye_week, :adp, :tier, :position, :beer_value)
+    params.require(:player).permit(:name, :team, :points_2013, :bye_week, :adp, :tier, :position, :beer_value, :id)
   end
 
 end
