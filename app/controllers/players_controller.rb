@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
   end
 
   def edit
-  	@player = Player.find_by(params[:name])
+  	@player = Player.find_by(params[:id])
 	end
 
 	def update

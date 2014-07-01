@@ -31,6 +31,6 @@ Logic in drafting:
 BUGS
 ====
 
-* Edit player not showing correct player
+
 * Best available player not working in Rails
 * Second best available player not working in Rails
