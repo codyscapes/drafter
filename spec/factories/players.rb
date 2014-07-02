@@ -10,7 +10,7 @@ FactoryGirl.define do
     bye_week 12
     adp 84
     tier 3
-    status 'free'
+    drafted false
 
   	factory :reggie_bush do
 	  	name 'Reggie Bush'
@@ -21,7 +21,7 @@ FactoryGirl.define do
 	    bye_week 9
 	    adp 30
 	    tier 6
-	    status 'free'
+	    drafted false
 	  end
 
 	    factory :jamaal_charles do
@@ -33,7 +33,7 @@ FactoryGirl.define do
 	    bye_week 6
 	    adp 2
 	    tier 1
-	    status 'free'
+	    drafted false
 	  end
 
 	    factory :matt_forte do
@@ -45,6 +45,7 @@ FactoryGirl.define do
 	    bye_week 4
 	    adp 4
 	    tier 1
+	    drafted false
 	  end
 
 	  	factory :ray_rice do
@@ -56,7 +57,7 @@ FactoryGirl.define do
 	  	bye_week 5
 	  	adp 88
 	  	tier 8
-	  	status 'free'
+	  	drafted false
 	  end
 
 	  	factory :dud do
@@ -68,7 +69,7 @@ FactoryGirl.define do
 	  	bye_week 2
 	  	adp 999
 	  	tier 999
-	  	status 'free'
+	  	drafted false
 	  end
 	end
 end

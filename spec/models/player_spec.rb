@@ -11,5 +11,10 @@ RSpec.describe Player, :type => :model do
 			player = FactoryGirl.create(:reggie_bush)
 			player.position.should eq 'HB'
 		end
+
+		it 'should initialize with a drafted status of false' do
+			player = FactoryGirl.create(:player)
+			player.drafted.should eq false
+		end
 	end
 end
