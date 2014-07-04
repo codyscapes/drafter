@@ -69,3 +69,7 @@
 	margin: 0;
 	padding: 0;
 }
+
+.draft-center {
+	display: none;
+}
