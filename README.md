@@ -32,3 +32,4 @@ BUGS
 ====
 * Best available player not working in Rails
 * Second best available player not working in Rails
+* Need to create draft through ajax
