@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Player, :type => :model do
+  it { should validate_presence_of :name}
+
 	describe Player do
 		it 'should initialize with a name' do
 			player = FactoryGirl.create(:player)
