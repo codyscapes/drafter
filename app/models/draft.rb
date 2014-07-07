@@ -130,4 +130,20 @@ class Draft
 		end
 	end
 	@suggestions
+
+	def analyze_bye_week(suggested_player)
+
+		current_team = @order[0]
+		problem = ''
+
+		current_team.drafted_players.each do |player|
+			if player.bye_week == suggested_player.bye_week && player.position == suggested_player.position
+				problem = player
+				break
+			else
+				problem = false
+			end
+		end
+		problem
+	end
 end

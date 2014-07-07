@@ -18,7 +18,7 @@ FactoryGirl.define do
 	    position 'HB'
 	    points_2013 175
 	    beer_value 7
-	    bye_week 9
+	    bye_week 5
 	    adp 30
 	    tier 6
 	    drafted false
@@ -30,7 +30,7 @@ FactoryGirl.define do
 	    position 'HB'
 	    points_2013 296
 	    beer_value 9
-	    bye_week 6
+	    bye_week 5
 	    adp 2
 	    tier 1
 	    drafted false
