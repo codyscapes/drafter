@@ -1,6 +1,7 @@
 Drafter
 =======
 
+
 User Stories:
 * As a user, I want to enter my league settings and receive recommendations on the best player to pick during my draft.
 * As a user, I want to pick from different draft strategies so I can feel like I've made part of the decision.
@@ -32,4 +33,4 @@ BUGS
 ====
 * Best available player not working in Rails
 * Second best available player not working in Rails
-* Need to create draft through ajax
+* Need to create draft through ajax after settings have been entered
