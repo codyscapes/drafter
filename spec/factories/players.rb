@@ -18,7 +18,7 @@ FactoryGirl.define do
 	    position 'HB'
 	    points_2013 175
 	    beer_value 7
-	    bye_week 5
+	    bye_week 8
 	    adp 30
 	    tier 6
 	    drafted false
@@ -42,7 +42,7 @@ FactoryGirl.define do
 	    position 'HB'
 	    points_2013 189
 	    beer_value 8
-	    bye_week 4
+	    bye_week 5
 	    adp 4
 	    tier 1
 	    drafted false
@@ -59,6 +59,18 @@ FactoryGirl.define do
 	  	tier 8
 	  	drafted false
 	  end
+
+	  	factory :eddie_lacy do
+  		name "Eddie Lacy"
+  		team 'Green Bay Packers'
+  		position 'HB'
+  		points_2013 221
+  		beer_value 2
+  		bye_week 5
+  		adp 80
+  		tier 2
+  		drafted false
+  	end
 
 	  	factory :dud do
 	  	name 'Aaron Hernandez'

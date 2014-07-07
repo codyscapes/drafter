@@ -134,16 +134,31 @@ class Draft
 	def analyze_bye_week(suggested_player)
 
 		current_team = @order[0]
-		problem = ''
+		problem = 'tbd'
 
-		current_team.drafted_players.each do |player|
-			if player.bye_week == suggested_player.bye_week && player.position == suggested_player.position
-				problem = player
+		current_team.drafted_players.each do |rostered_player|
+			if rostered_player.bye_week == suggested_player.bye_week && rostered_player.position == suggested_player.position
+				problem = rostered_player
 				break
 			else
 				problem = false
 			end
 		end
+
 		problem
+
+
 	end
+
+	def analyze_bye_weeks(suggested_players)
+		result = []
+
+		print suggested_players
+
+		suggested_players.each do |suggested_player|
+			result << analyze_bye_week(suggested_player)
+		end
+		result
+	end
+
 end
