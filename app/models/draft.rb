@@ -104,7 +104,7 @@ class Draft
 	end
 
 	def third_best_available(ranking_method)
-		current_team = @order[0]
+		# current_team = @order[0]
 		if ranking_method == 'beer_value'
 			best_player = self.best_available('beer_value')
 			second_best_player = self.second_best_available('beer_value')
@@ -121,7 +121,7 @@ class Draft
 	end
 
 	def draft_suggestions(ranking_method)
-		current_team = @order[0]
+		# current_team = @order[0]
 		@suggestions = []
 		if ranking_method == 'beer_value'
 			@suggestions << self.best_available(ranking_method)

@@ -45,8 +45,9 @@
   <div class='col-md-2 master_list'>
     <div id='player_list'>
 
-        <%= @draft.best_available('beer_value').name %>
-
+      <% @player.each do |player| %>
+        <%= player.name %></br>
+      <% end %>
 
     </div>
   </div>
@@ -55,9 +56,21 @@
     <div id='recommendations'>
       <p> Player rec's:</p>
 
-      <% @player.each do |player| %>
-        <%= player.name %>
+      <% if 1 == 2 %>
+      <%= @draft.best_available('beer_value').name %> </br>
       <% end %>
+
+      <% if 1 == 2 %>
+      <% @draft.draft_suggestions('beer_value').each do |player| %>
+      <%= player.name %> </br>
+      <% end %>
+      <% end %>
+
+      <% @draft.players.reject{|element| element == @draft.best_available('beer_value')}.each do |player|%>
+      <%= player.name %>
+      <% end %>
+
+
 
     </div>
 

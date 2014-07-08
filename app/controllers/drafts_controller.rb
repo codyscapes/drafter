@@ -1,7 +1,7 @@
 class DraftsController < ApplicationController
   def index
   	@player = Player.all
-  	# @draft = Draft.create(params[:number_of_teams, :draft_type)
+  	@draft = Draft.create(2, 'snake')
   end
 
   def show
@@ -16,9 +16,9 @@ class DraftsController < ApplicationController
 
 private
 
-  def player_params
-    params.require(:draft).permit(:number_of_teams, :draft_type)
-  end
+  # def player_params
+  #   params.require(:draft).permit(:number_of_teams, :draft_type)
+  # end
 
 
 end
