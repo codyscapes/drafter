@@ -1,122 +1,114 @@
+<div class='row top_header'>
+  <div class='col-md-12'>
+  	<div class='row'>
+  		<div class='col-md-4'>
 
-    <div class='row top_header'>
-      <div class='col-md-12'>
-      	<div class='row'>
-      		<div class='col-md-4'>
+      <p>Starting QBs:</p>
+      <select class='starter_settings'>
+        <option value="QB-1">1</option>
+        <option value="QB-2">2</option>
+      </select>
 
+      <p>Starting HBs:</p>
+      <select class='starter_settings'>
+        <option value="HB-1">1</option>
+        <option value="HB-2">2</option>
+        <option value="HB-3">3</option>
+        <option value="HB-4">4</option>
+      </select>
 
-
-          <p>Starting QBs:</p>
-          <select class='starter_settings'>
-            <option value="QB-1">1</option>
-            <option value="QB-2">2</option>
-          </select>
-
-          <p>Starting HBs:</p>
-          <select class='starter_settings'>
-            <option value="HB-1">1</option>
-            <option value="HB-2">2</option>
-            <option value="HB-3">3</option>
-            <option value="HB-4">4</option>
-          </select>
-
-
-          <p>Starting WRs:</p>
-          <select class='starter_settings'>
-            <option value="WR-1">1</option>
-            <option value="WR-2">2</option>
-            <option value="WR-3">3</option>
-            <option value="WR-4">4</option>
-          </select>
+      <p>Starting WRs:</p>
+      <select class='starter_settings'>
+        <option value="WR-1">1</option>
+        <option value="WR-2">2</option>
+        <option value="WR-3">3</option>
+        <option value="WR-4">4</option>
+      </select>
 
 
-      		</div>
-      		<div class='col-md-4'>
-      			<p class='top_choices'> DRAFT # </p>
-      			<p class='top_choices'> TEAMS </p>
-      			<p class='top_choices'> <%= link_to "New Draft", new_draft_path, id: "new_draft", remote: true %>  </p>
-      		</div>
-      		<div class='col-md-4'>
-      			<p class='top_choices'> PPR </p>
-      			<p class='top_choices'> PPC </p>
-      			<p class='top_choices'> PPTD </p>
-      		</div>
-      	</div>
+  		</div>
+  		<div class='col-md-4'>
+  			<p class='top_choices'> DRAFT # </p>
+  			<p class='top_choices'> TEAMS </p>
+  			<p class='top_choices'> <%= link_to "New Draft", new_draft_path, id: "new_draft", remote: true %>  </p>
+  		</div>
+  		<div class='col-md-4'>
+  			<p class='top_choices'> PPR </p>
+  			<p class='top_choices'> PPC </p>
+  			<p class='top_choices'> PPTD </p>
+  		</div>
+  	</div>
+  </div>
+</div>
+
+<div class='row draft-center'>
+  <div class='col-md-2 master_list'>
+    <div id='player_list'>
+
+        <%= @draft.best_available('beer_value').name %>
+
+
+    </div>
+  </div>
+
+  <div class='col-md-7'>
+    <div id='recommendations'>
+      <p> Player rec's:</p>
+
+      <% @player.each do |player| %>
+        <%= player.name %>
+      <% end %>
+
+    </div>
+
+    <div class='position_tracking'>
+      <div class='row'>
+        <div class='col-md-2 remaining'>
+          <p>QBs:</p>
+        </div>
+        <div class='col-md-2 remaining'>
+          <p>HBs:</p>
+        </div>
+        <div class='col-md-2 remaining'>
+          <p>WRs:</p>
+        </div>
+        <div class='col-md-2 remaining'>
+          <p>TEs:</p>
+        </div>
+        <div class='col-md-2 remaining'>
+          <p>DEF:</p>
+        </div>
+        <div class='col-md-2 remaining'>
+          <p>Ks:</p>
+        </div>
       </div>
     </div>
 
-    <div class='row draft-center'>
-      <div class='col-md-2 master_list'>
-        <div id='player_list'>
-        </div>
-
-<!--
-<% if 1 == 2 %>
-      	<% @player.each do |player| %>
-        <ul>
-          <li><%= player.name %></li>
-        </ul>
-        <%end%>
-<% end %>
- -->
-
-      </div>
-      <div class='col-md-7'>
-
-        <div class='recommendations'>
-
-
-
-        </div>
-
-        <div class='position_tracking'>
-          <div class='row'>
-            <div class='col-md-2 remaining'>
-              <p>QBs:</p>
-            </div>
-            <div class='col-md-2 remaining'>
-              <p>HBs:</p>
-            </div>
-            <div class='col-md-2 remaining'>
-              <p>WRs:</p>
-            </div>
-            <div class='col-md-2 remaining'>
-              <p>TEs:</p>
-            </div>
-            <div class='col-md-2 remaining'>
-              <p>DEF:</p>
-            </div>
-            <div class='col-md-2 remaining'>
-              <p>Ks:</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class='col-md-3'>
-        <div class='roster'>
-          <p>Drafted players will appear here.  A team rundown at each position will be available. </p>
-          <ul>
-            <li> QB:  </li>
-            <li> HB:  </li>
-            <li> WR:  </li>
-            <li> TE:  </li>
-            <li> DEF: </li>
-            <li> K: </li>
-            <li> FLEX: </li>
-            <li> BENCH: </li>
-          </ul>
-        </div>
-        <div class='under_roster'>
-          <p> This area does not have a name yet because I do not know what I will put here!</p>
-        </div>
-      </div>
+  </div>
+  <div class='col-md-3'>
+    <div class='roster'>
+      <p>Drafted players will appear here.  A team rundown at each position will be available. </p>
+      <ul>
+        <li> QB:  </li>
+        <li> HB:  </li>
+        <li> WR:  </li>
+        <li> TE:  </li>
+        <li> DEF: </li>
+        <li> K: </li>
+        <li> FLEX: </li>
+        <li> BENCH: </li>
+      </ul>
     </div>
-    <div class='row footer'>
-      <div class='col-md-12 bottom_footer'>
-        <p> I don't know what will go at the bottom of the page.</p>
-      </div>
+    <div class='under_roster'>
+      <p> This area does not have a name yet because I do not know what I will put here!</p>
     </div>
+  </div>
+</div>
+<div class='row footer'>
+  <div class='col-md-12 bottom_footer'>
+    <p> I don't know what will go at the bottom of the page.</p>
+  </div>
+</div>
 
 
 

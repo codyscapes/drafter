@@ -15,62 +15,66 @@
  *= require bootstrap
  */
 
-.under_player_options {
-	font-size: 12px;
-	margin-top: 0px;
-}
+	.under_player_options {
+		font-size: 12px;
+		margin-top: 0px;
+	}
 
-.col-md-7 {
-	outline: 2px solid black;
-}
+	.col-md-7 {
+		outline: 2px solid black;
+	}
 
-.recommendations {
-	outline: 2px solid black;
-	height: 300px;
-}
+	#recommendations {
+		outline: 2px solid black;
+		height: 300px;
+	}
 
-.master_list {
-	outline: 2px solid black;
-	height: 650px;
-}
+	.master_list {
+		outline: 2px solid black;
+		height: 650px;
+	}
 
-.top_header {
-	outline: 2px solid black;
-	height: 75px;
-}
+	.top_header {
+		outline: 2px solid black;
+		height: 75px;
+		display: none;
+	}
 
-.roster {
-	outline: 2px solid black;
-	height: 300px;
-}
+	.roster {
+		outline: 2px solid black;
+		height: 300px;
+	}
 
-.bottom_footer {
-	outline: 2px solid black;
-	height: 30px;
-}
+	.bottom_footer {
+		outline: 2px solid black;
+		height: 30px;
+		display: none;
+	}
 
-.position_tracking {
-	height: 350px;
-	outline: 2px solid black;
-}
+	.position_tracking {
+		height: 350px;
+		outline: 2px solid black;
+	}
 
-.under_roster {
-	height: 350px;
-	outline: 2px solid black;
-}
+	.under_roster {
+		height: 350px;
+		outline: 2px solid black;
+	}
 
-.remaining {
-	outline: 1px solid black;
-	height: 350px;
-}
+	.remaining {
+		outline: 1px solid black;
+		height: 350px;
+	}
 
-.top_choices {
-	text-align: center;
-	margin: 0;
-	padding: 0;
-}
+	.top_choices {
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
 
-.draft-center {
+
+/*.draft-center {
 	display: none;
 }
+*/
 
