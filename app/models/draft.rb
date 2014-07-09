@@ -74,62 +74,17 @@ class Draft
 	end
 
 	def best_available(ranking_method)
-		# current_team = @order[0]
+		current_team = @order[0]
 
-		best_player = @players[0]
-
-		if ranking_method == "beer_value"
-			@players.each do |player|
-				if player.beer_value > best_player.beer_value
-					best_player = player
-				end
-			end
-		end
-		best_player
-	end
-
-	def second_best_available(ranking_method)
-		# current_team = @order[0]
+		best_players_available = []
 
 		if ranking_method == 'beer_value'
-			best_player = self.best_available('beer_value')
-			second_best_player = @players[0]
-			@players.reject{|element| element == self.best_available('beer_value')}.each do |player|
-				if player.beer_value > second_best_player.beer_value
-					second_best_player = player
-				end
-			end
+			best_players_available = @players.sort { |b,a| a.beer_value <=> b.beer_value }
 		end
-		second_best_player
+
+		return best_players_available[0], best_players_available[1], best_players_available[2]
+
 	end
-
-	def third_best_available(ranking_method)
-		# current_team = @order[0]
-		if ranking_method == 'beer_value'
-			best_player = self.best_available('beer_value')
-			second_best_player = self.second_best_available('beer_value')
-			third_best_player = @players[0]
-
-			@players.reject{|element| element == self.best_available('beer_value')}.each do |player|
-				if player.beer_value > third_best_player.beer_value and player != second_best_player
-					third_best_player = player
-				end
-			end
-
-		end
-		third_best_player
-	end
-
-	def draft_suggestions(ranking_method)
-		# current_team = @order[0]
-		@suggestions = []
-		if ranking_method == 'beer_value'
-			@suggestions << self.best_available(ranking_method)
-			@suggestions << self.second_best_available(ranking_method)
-			@suggestions << self.third_best_available(ranking_method)
-		end
-	end
-	@suggestions
 
 	def analyze_bye_week(suggested_player)
 
