@@ -35,3 +35,10 @@ BUGS
 * Best available player not working in Rails
 * Second best available player not working in Rails
 * Need to create draft through ajax after settings have been entered
+
+
+Current User Story:
+===================
+* I want to receive a recommendation of the best player available.
+
+-> Programmer notes: current strategy to show the best players is split into 4 different functions.  This does not seem DRY.  Today will be spent in attempt to refactor the code.
