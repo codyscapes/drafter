@@ -41,4 +41,6 @@ Current User Story:
 ===================
 * I want to receive a recommendation of the best player available.
 
--> Programmer notes: current strategy to show the best players is split into 4 different functions.  This does not seem DRY.  Today will be spent in attempt to refactor the code.
+Currently Programming:
+======================
+* Front end draft creating including moving players off of available and into drafted.  (To have player recommendation show the correct remaining players.)

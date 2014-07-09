@@ -139,7 +139,6 @@ RSpec.describe Draft, :type => :model do
 		end
 	end
 
-
 	describe 'analyze_bye_weeks' do
 		it 'should analyze the bye week for each player in the suggested player array and return an array of responses corresponding to each player in the suggested player array.' do
 			dud = FactoryGirl.create(:dud)
