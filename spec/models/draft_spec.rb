@@ -107,54 +107,54 @@ RSpec.describe Draft, :type => :model do
 		end
 	end
 
-	# describe 'analyze_bye_week' do
-	# 	it 'shouold analyze the drafting teams roster and if a suggested player has the same bye week as a player already in the roster, it should return the name of the player already in the roster.' do
-	# 		dud = FactoryGirl.create(:dud)
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		jamaal = FactoryGirl.create(:jamaal_charles)
-	# 		forte = FactoryGirl.create(:matt_forte)
-	# 		rice = FactoryGirl.create(:ray_rice)
-	# 		draft = Draft.create(2, 'snake')
-	# 		draft.start()
-	# 		draft.pick(jamaal)
-	# 		draft.pick(cam)
-	# 		draft.pick(reggie)
-	# 		draft.analyze_bye_week(draft.draft_suggestions('beer_value')[0]).should eq jamaal
-	# 	end
+	describe 'analyze_bye_week' do
+		it 'shouold analyze the drafting teams roster and if a suggested player has the same bye week as a player already in the roster, it should return the name of the player already in the roster.' do
+			dud = FactoryGirl.create(:dud)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			draft = Draft.create(2, 'snake')
+			draft.start()
+			draft.pick(jamaal)
+			draft.pick(cam)
+			draft.pick(reggie)
+			draft.analyze_bye_week(draft.best_available('beer_value')[0]).should eq jamaal
+		end
 
-	# 	it 'should return false if a suggested player does not have the same bye week as a player in the same position for the team that is currently drafting.' do
-	# 		dud = FactoryGirl.create(:dud)
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		jamaal = FactoryGirl.create(:jamaal_charles)
-	# 		forte = FactoryGirl.create(:matt_forte)
-	# 		rice = FactoryGirl.create(:ray_rice)
-	# 		draft = Draft.create(2, 'snake')
-	# 		draft.start()
-	# 		draft.pick(cam)
-	# 		draft.pick(jamaal)
-	# 		draft.pick(forte)
-	# 		draft.analyze_bye_week(draft.draft_suggestions('beer_value')[0]).should eq false
-	# 	end
-	# end
+		it 'should return false if a suggested player does not have the same bye week as a player in the same position for the team that is currently drafting.' do
+			dud = FactoryGirl.create(:dud)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			draft = Draft.create(2, 'snake')
+			draft.start()
+			draft.pick(cam)
+			draft.pick(jamaal)
+			draft.pick(forte)
+			draft.analyze_bye_week(draft.best_available('beer_value')[0]).should eq false
+		end
+	end
 
 
-	# describe 'analyze_bye_weeks' do
-	# 	it 'should analyze the bye week for each player in the suggested player array and return an array of responses corresponding to each player in the suggested player array.' do
-	# 		dud = FactoryGirl.create(:dud)
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		jamaal = FactoryGirl.create(:jamaal_charles)
-	# 		forte = FactoryGirl.create(:matt_forte)
-	# 		rice = FactoryGirl.create(:ray_rice)
-	# 		lacy = FactoryGirl.create(:eddie_lacy)
-	# 		draft = Draft.create(2, 'snake')
-	# 		draft.start()
-	# 		draft.pick(jamaal)
-	# 		draft.pick(cam)
-	# 		draft.pick(rice)
-	# 		draft.analyze_bye_weeks(draft.draft_suggestions('beer_value')).should eq [jamaal, false, jamaal]
-	# 	end
-	# end
+	describe 'analyze_bye_weeks' do
+		it 'should analyze the bye week for each player in the suggested player array and return an array of responses corresponding to each player in the suggested player array.' do
+			dud = FactoryGirl.create(:dud)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			lacy = FactoryGirl.create(:eddie_lacy)
+			draft = Draft.create(2, 'snake')
+			draft.start()
+			draft.pick(jamaal)
+			draft.pick(cam)
+			draft.pick(rice)
+			draft.analyze_bye_weeks(draft.best_available('beer_value')).should eq [jamaal, false, jamaal]
+		end
+	end
 end
