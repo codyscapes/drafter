@@ -72,6 +72,13 @@
 		padding: 0;
 	}
 
+	#player_list {
+		font-size: 20px;
+	}
+
+	#player_list li a:hover {
+		color: black;
+	}
 
 /*.draft-center {
 	display: none;

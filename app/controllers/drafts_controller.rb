@@ -10,9 +10,9 @@ class DraftsController < ApplicationController
   def new
   end
 
-  # def create
-  # 	@draft = Draft.create(params[:type, :])
-  # end
+  def create
+  	@draft = Draft.create(params[:number_of_teams, :draft_type])
+  end
 
 private
 
