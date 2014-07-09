@@ -8,17 +8,18 @@ class DraftsController < ApplicationController
   end
 
   def new
+    @draft = Draft.new(12, 'snake')
   end
 
   def create
-  	@draft = Draft.create(params[:number_of_teams, :draft_type])
+  	@draft = Draft.create(params[:draft])
   end
 
 private
 
-  # def player_params
-  #   params.require(:draft).permit(:number_of_teams, :draft_type)
-  # end
+  def draft_params
+    params.require(:draft).permit(:number_of_teams, :draft_type)
+  end
 
 
 end
