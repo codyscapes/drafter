@@ -5,9 +5,16 @@ class DraftsController < ApplicationController
   end
 
   def show
+    @draft = Draft.create(2, 'snake')
   end
 
+  def edit
+    @draft = Draft.create(2, 'snake')
+  end
+
+
   def new
+    @draft = Draft.new(draft_params[:draft_type], draft_params[:number_of_teams])
   end
 
 

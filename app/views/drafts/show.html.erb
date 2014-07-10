@@ -55,19 +55,21 @@
   <div class='col-md-7'>
     <div id='recommendations'>
       <p> Player rec's:</p>
-        <div class = 'row'>
-          <% @draft.best_available('beer_value').each do |player| %>
-            <div class = 'col-md-4'>
-              <div class='player_box'>
-                Player: <%= player.name %></br>
-                Team: <%= player.team %></br>
-                Beer Value: <%= player.beer_value %> </br>
-                ADP: <%= player.adp %> </br>
-                Bye Week: <%= player.bye_week %></br>
-              </div>
-            </div>
-          <% end %>
-        </div>
+
+      <% if 1 == 2 %>
+      <%= @draft.best_available('beer_value').name %> </br>
+      <% end %>
+
+      <% if 1 == 2 %>
+      <% @draft.draft_suggestions('beer_value').each do |player| %>
+      <%= player.name %> </br>
+      <% end %>
+      <% end %>
+
+      <% @draft.players.reject{|element| element == @draft.best_available('beer_value')}.each do |player|%>
+      <%= player.name %>
+      <% end %>
+
 
 
     </div>

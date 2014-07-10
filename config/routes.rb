@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "drafts#new"
+  root to: "drafts#index"
 
   resources :players
   resources :drafts
