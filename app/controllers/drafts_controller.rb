@@ -1,6 +1,6 @@
 class DraftsController < ApplicationController
   def index
-  	@player = Player.all
+
   	@draft = Draft.create(2, 'snake')
   end
 

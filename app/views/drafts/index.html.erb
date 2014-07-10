@@ -74,24 +74,42 @@
 
     <div class='position_tracking'>
       <div class='row'>
+
         <div class='col-md-2 remaining'>
+
           <p>QBs:</p>
+          <% @draft.players do |player| %>
+            <% if player.position = 'QB' %>
+              <%= player.name %>
+            <% end %>
+          <% end %>
         </div>
+
         <div class='col-md-2 remaining'>
           <p>HBs:</p>
+          <% @draft.players do |player| %>
+            <% if player.position = 'HB' %>
+              <%= player.name %>
+            <% end %>
+          <% end %>
         </div>
+
         <div class='col-md-2 remaining'>
           <p>WRs:</p>
         </div>
+
         <div class='col-md-2 remaining'>
           <p>TEs:</p>
         </div>
+
         <div class='col-md-2 remaining'>
           <p>DEF:</p>
         </div>
+
         <div class='col-md-2 remaining'>
           <p>Ks:</p>
         </div>
+
       </div>
     </div>
 

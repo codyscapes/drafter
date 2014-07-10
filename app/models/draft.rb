@@ -76,7 +76,7 @@ class Draft
 	end
 
 	def best_available(ranking_method)
-		# current_team = @order[0]
+		current_team = @order[0]
 
 		best_players_available = []
 
@@ -90,7 +90,7 @@ class Draft
 
 	def analyze_bye_week(suggested_player)
 
-		# current_team = @order[0]
+		current_team = @order[0]
 		problem = 'tbd'
 
 		current_team.drafted_players.each do |rostered_player|
