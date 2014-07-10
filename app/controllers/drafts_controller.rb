@@ -8,18 +8,17 @@ class DraftsController < ApplicationController
   end
 
   def new
-
+    @draft = Draft.new(draft_params)
   end
 
-  def create
-  	@draft = Draft.create(params[:draft])
-  end
 
-private
+
+  private
 
   def draft_params
-    params.require(:draft).permit(:number_of_teams, :draft_type)
+    params.require(:draft).permit(:draft_type, :number_of_teams)
   end
 
-
 end
+
+
