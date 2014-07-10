@@ -8,7 +8,7 @@ class DraftsController < ApplicationController
   end
 
   def new
-    @draft = Draft.new(12, 'snake')
+
   end
 
   def create
