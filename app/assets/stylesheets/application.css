@@ -38,12 +38,12 @@
 	}
 
 	#recommendations {
-		outline: 2px solid black;
+
 		height: 300px;
 	}
 
 	.master_list {
-		outline: 2px solid black;
+		outline: 1px solid black;
 		height: 650px;
 	}
 
@@ -66,7 +66,7 @@
 
 	.position_tracking {
 		height: 350px;
-		outline: 2px solid black;
+
 	}
 
 	.under_roster {
@@ -106,6 +106,9 @@
 	}
 	.btn-group-wr {
 		margin-left: 135px
+	}
+	.remaining h5 {
+		text-decoration: underline;
 	}
 
 /*.draft-center {

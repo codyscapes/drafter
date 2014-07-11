@@ -77,37 +77,65 @@
 
         <div class='col-md-2 remaining'>
 
-          <p>QBs:</p>
-          <% @draft.players do |player| %>
-            <% if player.position = 'QB' %>
-              <%= player.name %>
+          <h5>QBs:</h5>
+            <% @draft.players.each do |player| %>
+              <% if player.position == 'QB' %>
+                <%= player.name %> </br>
+              <% end %>
             <% end %>
-          <% end %>
+
         </div>
 
         <div class='col-md-2 remaining'>
-          <p>HBs:</p>
-          <% @draft.players do |player| %>
-            <% if player.position = 'HB' %>
-              <%= player.name %>
+
+          <h5>HBs:</h5>
+            <% @draft.players.each do |player| %>
+              <% if player.position == 'HB' %>
+                <%= player.name %> </br>
+              <% end %>
             <% end %>
-          <% end %>
+
         </div>
 
         <div class='col-md-2 remaining'>
-          <p>WRs:</p>
+          <h5>WRs:</h5>
+            <% @draft.players.each do |player| %>
+              <% if player.position == 'WR' %>
+                <%= player.name %> </br>
+              <% end %>
+            <% end %>
         </div>
 
         <div class='col-md-2 remaining'>
-          <p>TEs:</p>
+
+          <h5>TEs:</h5>
+            <% @draft.players.each do |player| %>
+              <% if player.position == 'TE' %>
+                <%= player.name %> </br>
+              <% end %>
+            <% end %>
+
         </div>
 
         <div class='col-md-2 remaining'>
-          <p>DEF:</p>
+
+          <h5>DEFs:</h5>
+            <% @draft.players.each do |player| %>
+              <% if player.position == 'DEF' %>
+                <%= player.name %> </br>
+              <% end %>
+            <% end %>
+
         </div>
 
         <div class='col-md-2 remaining'>
-          <p>Ks:</p>
+
+          <h5>Ks:</h5>
+            <% @draft.players.each do |player| %>
+              <% if player.position == 'K' %>
+                <%= player.name %> </br>
+              <% end %>
+            <% end %>
         </div>
 
       </div>
