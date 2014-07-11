@@ -1,6 +1,5 @@
 class DraftsController < ApplicationController
   def index
-
   	@draft = Draft.create(2, 'snake')
   end
 
