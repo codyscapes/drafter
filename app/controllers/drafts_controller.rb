@@ -1,28 +1,29 @@
 class DraftsController < ApplicationController
   def index
-  	@draft = Draft.create(2, 'snake')
+    @drafts = Draft.all
   end
 
   def show
-    @draft = Draft.create(2, 'snake')
+    @draft = Draft.find(params[:id])
+    @players = @draft.players.order('adp')
   end
 
   def edit
-    @draft = Draft.create(2, 'snake')
+
   end
 
 
   def new
-    @draft = Draft.new(draft_params[:draft_type], draft_params[:number_of_teams])
+
   end
 
 
 
-  private
+  # private
 
-  def draft_params
-    params.permit(:draft_type, :number_of_teams)
-  end
+  # def draft_params
+  #   params.require(:draft)
+  # end
 
 end
 
