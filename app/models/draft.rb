@@ -1,6 +1,4 @@
-class Draft
-	extend ActiveModel::Naming
-  include ActiveModel::AttributeMethods
+class Draft < ActiveRecord::Base
 
 	attr_reader :type, :order, :rounds, :players
 

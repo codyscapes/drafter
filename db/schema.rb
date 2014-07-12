@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702012429) do
+ActiveRecord::Schema.define(version: 20140712203801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drafts", force: true do |t|
+    t.integer  "draft_position"
+    t.integer  "number_of_teams"
+    t.integer  "PPTD"
+    t.integer  "PPR"
+    t.integer  "Number_of_starting_QBs"
+    t.integer  "Number_of_starting_HBs"
+    t.integer  "Number_of_starting_WRs"
+    t.integer  "Number_of_starting_FLEX"
+    t.string   "draft_type"
+    t.string   "keeper"
+    t.string   "ranking_method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "players", force: true do |t|
     t.string  "name"
