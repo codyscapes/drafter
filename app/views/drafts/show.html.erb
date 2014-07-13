@@ -1,20 +1,20 @@
 <div class='row top_header'>
-  <div class='col-md-12'>
+  <div class='col-lg-12'>
     <div class='row'>
-      <div class='col-md-4'>
+      <div class='col-lg-4'>
 
         <p class='top_choices'> QBs </p>
         <p class='top_choices'> HBs </p>
         <p class='top_choices'> WRs </p>
 
       </div>
-      <div class='col-md-4'>
+      <div class='col-lg-4'>
         <p class='top_choices'> DRAFT #: <%= @draft.draft_position %> </p>
         <p class='top_choices'> Teams: <%= @draft.number_of_teams %> </p>
         <p class='top_choices'>  </p>
 
       </div>
-      <div class='col-md-4'>
+      <div class='col-lg-4'>
         <p class='top_choices'> PPR </p>
         <p class='top_choices'> PPC </p>
         <p class='top_choices'> PPTD </p>
@@ -25,7 +25,7 @@
 
 
 <div class='row draft-center'>
-  <div class='col-md-2 master_list'>
+  <div class='col-lg-2 master_list'>
     <div id='player_list'>
 
       <p> Player List </p>
@@ -40,13 +40,13 @@
     </div>
   </div>
 
-  <div class='col-md-7'>
+  <div class='col-lg-7'>
     <div id='recommendations'>
       <p> Player rec's:</p>
 
         <div class = 'row'>
           <% @draft.best_available.each do |player| %>
-            <div class = 'col-md-4'>
+            <div class = 'col-lg-4'>
               <div class='player_box'>
                 <div class='player_pic'>
                 </div>
@@ -71,7 +71,7 @@
 
     <div class='position_tracking'>
       <div class='row'>
-        <div class='col-md-2 remaining'>
+        <div class='col-lg-2 remaining'>
 
           <h5>QBs:</h5>
             <% @draft.players.each do |player| %>
@@ -82,7 +82,7 @@
 
         </div>
 
-        <div class='col-md-2 remaining'>
+        <div class='col-lg-2 remaining'>
 
 
           <h5>HBs:</h5>
@@ -94,7 +94,7 @@
 
         </div>
 
-        <div class='col-md-2 remaining'>
+        <div class='col-lg-2 remaining'>
 
           <h5>WRs:</h5>
             <% @draft.players.each do |player| %>
@@ -105,7 +105,7 @@
 
         </div>
 
-        <div class='col-md-2 remaining'>
+        <div class='col-lg-2 remaining'>
 
           <h5>TEs:</h5>
             <% @draft.players.each do |player| %>
@@ -116,7 +116,7 @@
 
         </div>
 
-        <div class='col-md-2 remaining'>
+        <div class='col-lg-2 remaining'>
 
           <h5>DEFs:</h5>
             <% @draft.players.each do |player| %>
@@ -127,7 +127,7 @@
 
         </div>
 
-        <div class='col-md-2 remaining'>
+        <div class='col-lg-2 remaining'>
 
           <h5>Ks:</h5>
             <% @draft.players.each do |player| %>
@@ -141,7 +141,7 @@
     </div>
 
   </div>
-  <div class='col-md-3'>
+  <div class='col-lg-3'>
     <div class='roster'>
       <p>Drafted players will appear here.  A team rundown at each position will be available. </p>
       <ul>
@@ -160,8 +160,10 @@
     </div>
   </div>
 </div>
+
+
 <div class='row footer'>
-  <div class='col-md-12 bottom_footer'>
+  <div class='col-lg-12 bottom_footer'>
     <p> I don't know what will go at the bottom of the page.</p>
   </div>
 </div>

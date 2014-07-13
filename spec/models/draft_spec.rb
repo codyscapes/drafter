@@ -11,6 +11,13 @@ RSpec.describe Draft, :type => :model do
 			draft.start
 			draft.players.should eq [cam]
 		end
+
+		it 'should set the order of the draft' do
+			draft = FactoryGirl.create(:draft)
+			draft.start
+			draft.order.should eq []
+		end
+
 	end
 
 	describe 'number_of_teams' do
@@ -19,7 +26,6 @@ RSpec.describe Draft, :type => :model do
 			draft.number_of_teams.should eq 12
 		end
 	end
-
 
 
 	# describe 'initialize' do

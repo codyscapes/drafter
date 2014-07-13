@@ -38,12 +38,8 @@
 		margin-top: 0px;
 	}
 
-	.col-md-7 {
-		outline: 2px solid black;
-	}
 
 	#recommendations {
-
 		height: 400px;
 	}
 
@@ -65,13 +61,13 @@
 	.bottom_footer {
 		outline: 2px solid black;
 		height: 30px;
-		display: none;
 	}
 
 	.position_tracking {
 		height: 250px;
 
 	}
+
 
 	.under_roster {
 		height: 350px;
