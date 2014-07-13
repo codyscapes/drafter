@@ -26,6 +26,11 @@ class PlayersController < ApplicationController
     @player = Player.create(player_params)
     @player.save
     redirect_to('/players')
+    if @draft.save
+      redirect_to draft_path(@draft)
+    else
+      render 'new'
+    end
   end
 
   def destroy

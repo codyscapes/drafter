@@ -4,6 +4,23 @@ RSpec.describe Draft, :type => :model do
 
 	it { should have_many :teams }
 
+	describe 'start' do
+		it 'should have an array of players' do
+			cam = FactoryGirl.create(:player)
+			draft = FactoryGirl.create(:draft)
+			draft.start
+			draft.players.should eq [cam]
+		end
+	end
+
+	# describe 'number_of_teams' do
+	# 	it 'should return the number of teams' do
+	# 		draft = FactoryGirl.create(:draft)
+	# 	end
+	# end
+
+
+
 	# describe 'initialize' do
 	# 	it 'should initialize with an array for player one' do
 	# 		draft = Draft.create(12, "snake")

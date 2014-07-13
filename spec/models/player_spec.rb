@@ -10,7 +10,13 @@ RSpec.describe Player, :type => :model do
   it { should validate_presence_of :tier}
   it { should validate_presence_of :position}
   it { should validate_presence_of :beer_value}
-  it { should validate_presence_of :drafted}
+
+  describe 'name' do
+  	it 'should return the name of the player' do
+  		cam = FactoryGirl.create(:player)
+  		cam.name.should eq 'Cam Newton'
+  	end
+  end
 
 
 	# describe Player do

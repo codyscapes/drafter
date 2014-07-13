@@ -1,15 +1,49 @@
 <%= form_for(@draft) do |f| %>
+    <div class="form-group">
+      <%= f.label "Draft Position" %>
+      <%= f.number_field :draft_position %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Draft Type:" %>
+      <%= f.text_field :draft_type %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Number of Teams:" %>
+      <%= f.number_field :number_of_teams %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Points Per TD:" %>
+      <%= f.number_field :PPTD %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Points Per Reception:" %>
+      <%= f.number_field :PPR %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Number of Starting QBs:" %>
+      <%= f.number_field :Number_of_starting_QBs %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Number of Starting HBs:" %>
+      <%= f.number_field :Number_of_starting_HBs %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Number of Starting WRs:" %>
+      <%= f.number_field :Number_of_starting_WRs %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Number of Starting FLEX players:" %>
+      <%= f.number_field :Number_of_starting_FLEX %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Keepers?" %>
+      <%= f.text_field :keeper %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Ranking Method?" %>
+      <%= f.text_field :ranking_method %>
+    </div>
 
-  <div class="form-group">
-    <%= f.label :draft_type %>
-    <%= f.text_field :draft_type, :class => 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :number_of_teams %>
-    <%= f.number_field , :class => 'form-control', %>
-  </div>
-
-  <%= f.submit :class => 'btn btn-info' %>
-
+    <%= f.submit 'Add Draft', :class => "btn btn-info" %>
 <% end %>
+

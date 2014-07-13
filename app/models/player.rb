@@ -7,7 +7,5 @@ class Player < ActiveRecord::Base
 	validates :tier, :presence => true
 	validates :position, :presence => true
 	validates :beer_value, :presence => true
-	validates :drafted, :presence => true
 
-	belongs_to :team
 end
