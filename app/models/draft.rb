@@ -42,7 +42,6 @@ class Draft < ActiveRecord::Base
 
 	def set_teams()
 		Team.where(draft_id: self.id).each do |team|
-			print team.draft_id
 			@teams << team
 		end
 	end
@@ -59,6 +58,18 @@ class Draft < ActiveRecord::Base
 
 	def teams
 		@teams
+	end
+
+	def team_picks(team)
+		@picks = []
+
+		@order.each_with_index do |pick, index|
+			if pick == team
+				@picks << index
+			end
+		end
+
+		@picks
 	end
 
 	def players

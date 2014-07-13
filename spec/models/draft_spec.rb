@@ -24,13 +24,34 @@ RSpec.describe Draft, :type => :model do
 		it 'should hold an array of all teams in the draft' do
 			draft = FactoryGirl.create(:two_team_draft)
 			team = Team.create(:team_name => 'team_one', :draft_position => 1, :draft_id => draft.id)
-			team1 = Team.create(:team_name => 'team_two', :draft_position => 2, :draft_id => draft.id)
+			team2 = Team.create(:team_name => 'team_two', :draft_position => 2, :draft_id => draft.id)
+			team3 = Team.create(:team_name => 'team_three', :draft_position => 2, :draft_id => draft.id)
+			team4 = Team.create(:team_name => 'team_four', :draft_position => 2, :draft_id => draft.id)
+			team5 = Team.create(:team_name => 'team_five', :draft_position => 2, :draft_id => draft.id)
+			team6 = Team.create(:team_name => 'team_six', :draft_position => 2, :draft_id => draft.id)
+			team7 = Team.create(:team_name => 'team_seven', :draft_position => 2, :draft_id => draft.id)
+			team8 = Team.create(:team_name => 'team_eight', :draft_position => 2, :draft_id => draft.id)
 			draft.start()
-			draft.teams.should eq [team, team1]
+			draft.teams.should eq [team, team2, team3, team4, team5, team6, team7, team8]
 		end
 	end
 
 
+	describe 'order' do
+		it 'should tell the order of the draft with a team at each position in the array' do
+			draft = FactoryGirl.create(:two_team_draft)
+			team = Team.create(:team_name => 'team_one', :draft_position => 1, :draft_id => draft.id)
+			team2 = Team.create(:team_name => 'team_two', :draft_position => 2, :draft_id => draft.id)
+			team3 = Team.create(:team_name => 'team_three', :draft_position => 2, :draft_id => draft.id)
+			team4 = Team.create(:team_name => 'team_four', :draft_position => 2, :draft_id => draft.id)
+			team5 = Team.create(:team_name => 'team_five', :draft_position => 2, :draft_id => draft.id)
+			team6 = Team.create(:team_name => 'team_six', :draft_position => 2, :draft_id => draft.id)
+			team7 = Team.create(:team_name => 'team_seven', :draft_position => 2, :draft_id => draft.id)
+			team8 = Team.create(:team_name => 'team_eight', :draft_position => 2, :draft_id => draft.id)
+			draft.start()
+			draft.team_picks(draft.teams[0]).should eq [0,15,16,31,32,47,48,63,64,79,80,95,96,111,112,127]
+		end
+	end
 
 
 	# describe 'order' do
