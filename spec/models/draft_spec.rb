@@ -12,11 +12,12 @@ RSpec.describe Draft, :type => :model do
 			draft.players.should eq [cam]
 		end
 
-		it 'should set the order of the draft' do
-			draft = FactoryGirl.create(:draft)
-			draft.start
-			draft.order.should eq []
-		end
+		# it 'should set the order of the draft' do
+
+		# 	draft = FactoryGirl.create(:draft)
+		# 	draft.start
+
+		# end
 
 	end
 
@@ -26,6 +27,18 @@ RSpec.describe Draft, :type => :model do
 			draft.number_of_teams.should eq 12
 		end
 	end
+
+	describe 'teams' do
+		it 'should hold an array of all teams in the draft' do
+			draft = FactoryGirl.create(:two_team_draft)
+			team = Team.create(:team_name => 'team_one', :draft_position => 1, :draft_id => draft.id)
+			team1 = Team.create(:team_name => 'team_two', :draft_position => 2, :draft_id => draft.id)
+			draft.start()
+			draft.teams.should eq [team, team1]
+		end
+	end
+
+
 
 
 	# describe 'initialize' do

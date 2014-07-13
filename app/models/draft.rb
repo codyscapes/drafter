@@ -4,20 +4,27 @@ class Draft < ActiveRecord::Base
 
 	def start
 		@players = []
-		@order = set_order()
+		@order = []
+		@teams = []
+
+		print self.id
+
+		Team.where(draft_id: self.id).each do |team|
+			print team.draft_id
+			@teams << team
+		end
 
 		Player.all.each do |player|
 			@players << player
 		end
-
-	end
-
-	def set_order()
-		return []
 	end
 
 	def order
 		@order
+	end
+
+	def teams
+		@teams
 	end
 
 	def players

@@ -18,6 +18,15 @@ RSpec.describe Player, :type => :model do
   	end
   end
 
+  describe 'team_id' do
+  	it 'should return an id' do
+  		cam = FactoryGirl.create(:player)
+  		team = FactoryGirl.create(:team)
+  		cam.team_id.should eq 1
+  	end
+  end
+
+
 
 	# describe Player do
 	# 	it 'should initialize with a name' do
