@@ -43,4 +43,4 @@ Current User Story:
 
 Currently Programming:
 ======================
-* Front end draft creating including moving players off of available and into drafted.  (To have player recommendation show the correct remaining players.)
+* Was not successful in creating a draft without extending the active record base.  In the process of creating a new branch that will switch the draft poro into an active record object.
