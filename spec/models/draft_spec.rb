@@ -102,18 +102,18 @@ RSpec.describe Draft, :type => :model do
 	# 	end
 	# end
 
-	# describe 'best_available' do
-	# 	it 'should return an array of the best players available in the draft' do
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		jamaal = FactoryGirl.create(:jamaal_charles)
-	# 		forte = FactoryGirl.create(:matt_forte)
-	# 		rice = FactoryGirl.create(:ray_rice)
-	# 		dud = FactoryGirl.create(:dud)
-	# 		draft = Draft.create(8, 'snake')
-	# 		draft.start()
-	# 		draft.best_available("beer_value").should eq [jamaal, forte, reggie]
-	# 	end
+	describe 'best_available' do
+		it 'should return an array of the best players available in the draft' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			dud = FactoryGirl.create(:dud)
+			draft = FactoryGirl.create(:draft)
+			draft.start()
+			draft.best_available.should eq [jamaal, forte, reggie]
+		end
 
 	# 	it 'should tell the drafting team the best player available in the draft and not show a player that has already been drafted.' do
 	# 		cam = FactoryGirl.create(:player)
@@ -125,7 +125,7 @@ RSpec.describe Draft, :type => :model do
 	# 		draft.pick(jamaal)
 	# 		draft.best_available("beer_value")[0].should eq forte
 	# 	end
-	# end
+	end
 
 	# describe 'analyze_bye_week' do
 	# 	it 'shouold analyze the drafting teams roster and if a suggested player has the same bye week as a player already in the roster, it should return the name of the player already in the roster.' do
