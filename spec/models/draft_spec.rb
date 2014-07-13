@@ -13,11 +13,12 @@ RSpec.describe Draft, :type => :model do
 		end
 	end
 
-	# describe 'number_of_teams' do
-	# 	it 'should return the number of teams' do
-	# 		draft = FactoryGirl.create(:draft)
-	# 	end
-	# end
+	describe 'number_of_teams' do
+		it 'should return the number of teams' do
+			draft = FactoryGirl.create(:draft)
+			draft.number_of_teams.should eq 12
+		end
+	end
 
 
 
