@@ -43,21 +43,28 @@
   <div class='col-md-7'>
     <div id='recommendations'>
       <p> Player rec's:</p>
-        <% if 2 == 1 %>
+
         <div class = 'row'>
-          <% @draft.best_available('beer_value').each do |player| %>
+          <% @draft.best_available.each do |player| %>
             <div class = 'col-md-4'>
               <div class='player_box'>
+                <div class='player_pic'>
+                </div>
                 Player: <%= player.name %></br>
                 Team: <%= player.team %></br>
                 Beer Value: <%= player.beer_value %> </br>
                 ADP: <%= player.adp %> </br>
                 Bye Week: <%= player.bye_week %></br>
+
+
+                <%= link_to 'Draft', edit_player_path(player), :class => "btn btn-info" %><%= link_to 'Remove', player, method: :delete, :class => "btn btn-danger" %>
+
+
               </div>
             </div>
           <% end %>
         </div>
-        <% end %>
+
 
 
     </div>
@@ -66,72 +73,69 @@
       <div class='row'>
         <div class='col-md-2 remaining'>
 
-<% if 2 == 1 %>
           <h5>QBs:</h5>
             <% @draft.players.each do |player| %>
               <% if player.position == 'QB' %>
                 <%= player.name %> </br>
               <% end %>
             <% end %>
-<% end %>
 
         </div>
 
         <div class='col-md-2 remaining'>
 
-<% if 2 == 1 %>
+
           <h5>HBs:</h5>
             <% @draft.players.each do |player| %>
               <% if player.position == 'HB' %>
                 <%= player.name %> </br>
               <% end %>
             <% end %>
-<% end %>
 
         </div>
 
         <div class='col-md-2 remaining'>
-<% if 2 == 1 %>
+
           <h5>WRs:</h5>
             <% @draft.players.each do |player| %>
               <% if player.position == 'WR' %>
                 <%= player.name %> </br>
               <% end %>
             <% end %>
-<% end %>
+
         </div>
 
         <div class='col-md-2 remaining'>
-<% if 2 == 1 %>
+
           <h5>TEs:</h5>
             <% @draft.players.each do |player| %>
               <% if player.position == 'TE' %>
                 <%= player.name %> </br>
               <% end %>
             <% end %>
-<% end %>
+
         </div>
 
         <div class='col-md-2 remaining'>
-<% if 2 == 1 %>
+
           <h5>DEFs:</h5>
             <% @draft.players.each do |player| %>
               <% if player.position == 'DEF' %>
                 <%= player.name %> </br>
               <% end %>
             <% end %>
-<% end %>
+
         </div>
 
         <div class='col-md-2 remaining'>
-<% if 2 == 1 %>
+
           <h5>Ks:</h5>
             <% @draft.players.each do |player| %>
               <% if player.position == 'K' %>
                 <%= player.name %> </br>
               <% end %>
             <% end %>
-<% end %>
+
         </div>
       </div>
     </div>

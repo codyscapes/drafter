@@ -28,5 +28,4 @@ class Draft < ActiveRecord::Base
 		return best_players_available[0], best_players_available[1], best_players_available[2]
 
 	end
-
 end
