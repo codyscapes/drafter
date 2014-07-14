@@ -7,7 +7,7 @@ FactoryGirl.define do
     draft_id 0
 
   	factory :team_two do
-			team_name 'team_three'
+			team_name 'team_two'
 	    draft_position 2
 	    draft_id 0
 	  end

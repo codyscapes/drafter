@@ -75,7 +75,7 @@ class Draft < ActiveRecord::Base
 		else
 			player.team_id = @order[0].id
 			player.drafted = true
-			# @order.shift
+			@order.shift
 			player
 		end
 	end

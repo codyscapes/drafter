@@ -143,30 +143,36 @@ RSpec.describe Draft, :type => :model do
 				draft.pick(draft.players[0])
 				draft.players[0].drafted.should eq true
 			end
+
+		it 'cycles the order to the next team by deleting the current team from the order array.' do
+			draft = FactoryGirl.create(:two_team_draft)
+			player = FactoryGirl.create(:player)
+			team = FactoryGirl.create(:team)
+			team2 = FactoryGirl.create(:team_two)
+			draft.start()
+			draft.pick(draft.players[0])
+			draft.order[0].team_name.should eq 'team_two'
 		end
+	end
 
+	describe 'best_available' do
+		it 'should return an array of the best players available in the draft' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			dud = FactoryGirl.create(:dud)
+			draft = FactoryGirl.create(:draft)
+			draft.start()
+			draft.best_available.should eq [jamaal, forte, reggie]
+		end
+	end
 
-
-
-
-	# describe 'best_available' do
-	# 	it 'should return an array of the best players available in the draft' do
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		jamaal = FactoryGirl.create(:jamaal_charles)
-	# 		forte = FactoryGirl.create(:matt_forte)
-	# 		rice = FactoryGirl.create(:ray_rice)
-	# 		dud = FactoryGirl.create(:dud)
-	# 		draft = FactoryGirl.create(:draft)
-	# 		draft.start()
-	# 		draft.best_available.should eq [jamaal, forte, reggie]
-	# 	end
-	# end
-
-	# describe 'number_of_teams' do
-	# 	it 'should return the number of teams' do
-	# 		draft = FactoryGirl.create(:draft)
-	# 		draft.number_of_teams.should eq 12
-	# 	end
-	# end
+	describe 'number_of_teams' do
+		it 'should return the number of teams' do
+			draft = FactoryGirl.create(:draft)
+			draft.number_of_teams.should eq 12
+		end
+	end
 end
