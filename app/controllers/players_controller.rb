@@ -1,23 +1,23 @@
 class PlayersController < ApplicationController
   def index
-  	@players = Player.all
+    @players = Player.all
   end
 
   def show
-  	@player = Player.find(params[:id])
+    @player = Player.find(params[:id])
   end
 
   def edit
-  	@player = Player.find(params[:id])
-	end
+    @player = Player.find(params[:id])
+  end
 
-	def update
+  def update
     @player = Player.find(params[:id])
     @player.update(player_params)
     redirect_to players_path
   end
 
-	def new
+  def new
     @player = Player.new
     render('new.html.erb')
   end

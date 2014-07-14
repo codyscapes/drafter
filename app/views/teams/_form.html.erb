@@ -1,0 +1,17 @@
+<%= form_for(@team) do |f| %>
+
+  <div class="fields">
+    <%= f.hidden_field :draft_id, :value => 0 %>
+
+    <div class="form-group">
+      <%= f.label "Team Name:" %>
+      <%= f.text_field :team_name %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Draft Position:" %>
+      <%= f.text_field :draft_position %>
+    </div>
+
+    <%= f.submit 'Add Team', :class => "btn btn-info" %>
+  </div>
+<% end %>

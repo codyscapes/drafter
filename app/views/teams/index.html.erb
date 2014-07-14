@@ -1,0 +1,12 @@
+<h1> TEAMS! </h1>
+
+<% @teams.each do |team| %>
+	<ul id='team_list'>
+		<li>
+			<%= link_to team.team_name, edit_team_path(team) %></br>
+		</li>
+	</ul>
+<% end %>
+
+
+<%= link_to "New Team", new_team_path, :class => "btn btn-success", id: "new_link" %>
