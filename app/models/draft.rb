@@ -10,7 +10,6 @@ class Draft < ActiveRecord::Base
 
 		self.set_teams()
 		self.set_players()
-
 		self.set_order()
 
 	end
@@ -43,8 +42,10 @@ class Draft < ActiveRecord::Base
 	def set_teams()
 
 		Team.where(draft_id: 0).each do |team|
-			new_team = Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id)
-			@teams << new_team
+			if team.draft_position <= self.number_of_teams
+				new_team = Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id)
+				@teams << new_team
+			end
 		end
 
 		@teams
