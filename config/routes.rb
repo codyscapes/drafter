@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :players
   resources :drafts
+  resources :teams
 end

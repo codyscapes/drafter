@@ -2,45 +2,23 @@ Drafter
 =======
 
 User Stories:
-*As a basic user, I want to hit the easy draft option and have my draft start with standard draft settings as defined by ESPN so that I can get a quick suggestion without much work.
-*As a basic user, I want to have my roster displayed near the top of the page so I can see who is on my team.  I want all of my players to have links on their name so that I can read more about the player I picked.
-*As a basic user, I do not want to have to add players to other teams - I only want to have to mark them as drafted so that I do not have to keep track of who the other teams are drafting.
+* As a basic user, I want to enter my league settings and be able to run a mock draft against experienced AI.
+* As a basic user, I want to enter my league settings and be able to run a LIVE draft where I can pick who is assigned to each team.
 
-Back-log (for more advanced players):
-* As a user, I want to pick from different draft strategies so I can feel like I've made part of the decision.
-* As a user, I want to put the players who have been drafted into the team that drafted them.
-* As a user, I want a picture of the player who is being suggested.
-* As a user, I want stats about the player who is being suggested.
-* As a user, I want a small selection for my next pick.
-* As a user, I do not want to navagate away from the page as the draft is underway.
-* As a user, I want to receive an email with my draft recap.
-* As a user, I do not want to have to scroll through a large page of players. I would rather have a small box to select from.
-* As a user, I want to select the best available player at each position.
-* As a user, I want to choose between beer sheets, ESPN, Yahoo or other experts to get the best available suggestion. I do not want my draft to be affected while I search through the different rankings.
-* As a user, I want to see a "worst available" selection that can filter between some of the worst players in the league such as Aaron Hernandez or some retired players.
+Backlog
+=======
+* Search with SPA (angular or ember)
+* Load working database
+* Integrate ESPN API to show player info
+* Functionality for keepers
+* Merge with ESPN / Yahoo
 
-Other Stories:
-* As a site admin, I want to login to edit player information to keep all players up to date.
+Current Features:
+===============
+* Working database of players
+* Logic for snake drafting
+* Tests for draft
 
-Logic in drafting:
-========
-* Possible bye-week trouble
-* Target one bye-week strategy
-* ECR
-* Beer-shees
-* VBD
-
-BUGS
-====
-* Best available player not working in Rails
-* Second best available player not working in Rails
-* Need to create draft through ajax after settings have been entered
-
-
-Current User Story:
-===================
-* I want to receive a recommendation of the best player available.
-
-Currently Programming:
-======================
-* Was not successful in creating a draft without extending the active record base.  In the process of creating a new branch that will switch the draft poro into an active record object.
+In development:
+===============
+* Each draft needs a set number of teams copied from the team template.
