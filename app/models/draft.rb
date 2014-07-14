@@ -37,6 +37,7 @@ class Draft < ActiveRecord::Base
 				end
 			end
 		end
+		@order
 	end
 
 	def set_players()
@@ -69,10 +70,14 @@ class Draft < ActiveRecord::Base
 
 
 	def pick(player)
-		player.team_id = @order[0].id
-		player.drafted = true
-		@order.shift
-		player
+		if player.drafted == true
+			return 'please choose a player who has not been drafted!'
+		else
+			player.team_id = @order[0].id
+			player.drafted = true
+			# @order.shift
+			player
+		end
 	end
 
 
