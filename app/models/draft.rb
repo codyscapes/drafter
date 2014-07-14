@@ -41,9 +41,13 @@ class Draft < ActiveRecord::Base
 
 
 	def set_teams()
-		Team.where(draft_id: self.id).each do |team|
-			@teams << team
+
+		Team.where(draft_id: 0).each do |team|
+			new_team = Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id)
+			@teams << new_team
 		end
+
+		@teams
 	end
 
 	def set_players()
