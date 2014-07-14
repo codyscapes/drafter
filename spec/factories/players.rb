@@ -73,6 +73,18 @@ FactoryGirl.define do
   		drafted false
   	end
 
+	  	factory :drafted_player do
+  		name "Eddie Lacy"
+  		team 'Green Bay Packers'
+  		position 'HB'
+  		points_2013 221
+  		beer_value 2
+  		bye_week 5
+  		adp 80
+  		tier 2
+  		drafted true
+  	end
+
 	  	factory :dud do
 	  	name 'Aaron Hernandez'
 	  	team 'NY State'

@@ -108,14 +108,35 @@ RSpec.describe Draft, :type => :model do
 	# 	end
 	# end
 
+	describe 'drafted_players' do
+		it 'should return all players who have a draft status of true' do
+			player = FactoryGirl.create(:drafted_player)
+			cam = FactoryGirl.create(:player)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.start()
+			draft.drafted_players.should eq [player]
+		end
+	end
+
+	describe 'available_players' do
+		it 'should return all players who have a draft status of false' do
+			player = FactoryGirl.create(:drafted_player)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.start()
+			draft.available_players.should eq [cam, reggie]
+		end
+	end
+
 	# describe 'pick' do
-	# 	it 'puts a player into a team array' do
+	# 	it 'drafts a player from the player array to the team roster' do
 	# 		player = FactoryGirl.create(:player)
-	# 		draft = Draft.create(8, 'snake')
+	# 		draft = FactoryGirl.create(:two_team_draft)
 	# 		draft.start()
 	# 		draft.pick(player)
-	# 		draft.teams[0].drafted_players[0].name.should eq 'Cam Newton'
-	# 	end
+	# 		draft.drafted_players.should eq [player]
+		# end
 
 	# 	it "automatically cycles to the next player's pick" do
 	# 		player = FactoryGirl.create(:player)

@@ -8,7 +8,7 @@ User Stories:
 Backlog
 =======
 * Search with SPA (angular or ember)
-* Load working database
+* Load working database w/ pictures
 * Integrate ESPN API to show player info
 * Functionality for keepers
 * Merge with ESPN / Yahoo
@@ -18,7 +18,8 @@ Current Features:
 * Working database of players
 * Logic for snake drafting
 * Tests for draft
+* Each draft loads a dynamic number of teams from the teams template.
 
 In development:
 ===============
-* Each draft needs a set number of teams copied from the team template.
+* As a user, I want to click draft and have the player I chose added to my team.

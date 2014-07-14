@@ -15,7 +15,7 @@ FactoryGirl.define do
 		ranking_method 'beer_value'
 
 		factory :two_team_draft do
-			draft_position 5
+			draft_position 1
 			number_of_teams 2
 			PPTD 4
 			PPR	0
