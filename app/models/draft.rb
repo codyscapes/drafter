@@ -23,6 +23,12 @@ class Draft < ActiveRecord::Base
 		@teams
 	end
 
+	def set_players()
+		Player.all.each do |player|
+			@players << player
+		end
+	end
+
 	def set_order()
 		@rounds.times do |number|
 			if number.even?

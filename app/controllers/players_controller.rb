@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
   def index
-    @players = Player.all
+    @master_players = Player.all.where(master: true)
+    @copied_players = Player.all.where(master: false)
   end
 
   def show
@@ -12,10 +13,9 @@ class PlayersController < ApplicationController
   end
 
   def update
-    session[:return_to] = request.referer
     @player = Player.find(params[:id])
     @player.update(player_params)
-    redirect_to session.delete(:return_to)
+    redirect_to players_path
   end
 
   def new
@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
 private
 
   def player_params
-    params.require(:player).permit(:name, :team, :points_2013, :bye_week, :adp, :tier, :position, :beer_value, :drafted, :id, :avatar)
+    params.require(:player).permit(:name, :team, :points_2013, :bye_week, :adp, :tier, :position, :beer_value, :drafted, :id, :avatar, :master)
   end
 
 end
