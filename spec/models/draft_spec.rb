@@ -167,6 +167,21 @@ RSpec.describe Draft, :type => :model do
 			draft.start()
 			draft.best_available.should eq [jamaal, forte, reggie]
 		end
+
+		it 'should return an array of the best players STILL available in the draft' do
+			jamaal = FactoryGirl.create(:jamaal_charles)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			rice = FactoryGirl.create(:ray_rice)
+			dud = FactoryGirl.create(:dud)
+			draft = FactoryGirl.create(:two_team_draft)
+			team = FactoryGirl.create(:team)
+			team2 = FactoryGirl.create(:team_two)
+			draft.start()
+			draft.pick(draft.players[0])
+			draft.best_available.should eq [forte, reggie, cam]
+		end
 	end
 
 	describe 'number_of_teams' do
