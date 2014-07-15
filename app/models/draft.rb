@@ -80,27 +80,6 @@ class Draft < ActiveRecord::Base
 		end
 	end
 
-
-
-
-
-
-
-
-
-	# def team_picks(team)
-	# 	@picks = []
-
-	# 	@order.each_with_index do |pick, index|
-	# 		if pick == team
-	# 			@picks << index
-	# 		end
-	# 	end
-	# 	@picks
-	# end
-
-
-
 	def best_available
 
 		best_players_available = []

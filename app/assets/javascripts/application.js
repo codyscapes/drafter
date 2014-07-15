@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery.mwheelintent
+//= require jquery.jscrollpane
+
+ $(function() {
+   $('.content-area').jScrollPane({
+    horizontalGutter:5,
+    verticalGutter:5,
+    'showArrows': false
+});
+
+
+
+

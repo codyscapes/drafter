@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'jscrollpane-rails'
+gem 'mwheelintent-rails'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 
 group :development do

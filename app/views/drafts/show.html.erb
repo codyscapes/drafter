@@ -30,6 +30,8 @@
 
       <p> Player List </p>
 
+
+
       <ul>
         <% @draft.players.each do |player| %>
           <li><%= player.name %></li>
@@ -155,11 +157,21 @@
         <li> BENCH: </li>
       </ul>
     </div>
+
+
+
+
     <div class='under_roster'>
-      <% @draft.order.each do |team| %>
-        <p> <%= team.team_name %></p>
-      <% end %>
+      <p> Draft Order: </p>
+      <div class='content-area order-list'>
+        <% @draft.order.each do |team| %>
+          <p> <%= team.team_name %></p>
+        <% end %>
+      </div>
     </div>
+
+
+
   </div>
 </div>
 

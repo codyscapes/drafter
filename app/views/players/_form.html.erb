@@ -14,7 +14,6 @@
 <%end%>
 
   <div class="fields">
-    <%= f.hidden_field :drafted, :value => false %>
 
     <div class="form-group">
       <%= f.label "Player Name:" %>
@@ -47,6 +46,10 @@
     <div class="form-group">
       <%= f.label "Beer Value:" %>
       <%= f.text_field :beer_value %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Drafted Status:" %>
+      <%= f.text_field :drafted %>
     </div>
 
     <%= f.submit 'Add Player', :class => "btn btn-info" %>
