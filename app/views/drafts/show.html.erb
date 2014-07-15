@@ -60,7 +60,10 @@
                 Bye Week: <%= player.bye_week %></br>
 
 
-                <%= link_to 'Draft', edit_player_path(player), :class => "btn btn-success" %><%= link_to 'Remove', player, method: :delete, :class => "btn btn-danger" %>
+                <%= link_to 'Draft', player_path(player, "player[team_id]" => @draft.order[0].id, "player[drafted]" => true), :method => :patch, :class => "btn btn-success" %>
+
+
+                <%= link_to 'Remove', player, method: :delete, :class => "btn btn-danger" %>
 
 
               </div>

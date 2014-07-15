@@ -20,6 +20,7 @@ Current Features:
 * Logic for snake drafting
 * Tests for draft
 * Each draft loads a dynamic number of teams from the teams template.
+* Players have pictures
 
 In development:
 ===============

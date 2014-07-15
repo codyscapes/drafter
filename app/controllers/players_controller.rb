@@ -12,9 +12,10 @@ class PlayersController < ApplicationController
   end
 
   def update
+    session[:return_to] = request.referer
     @player = Player.find(params[:id])
     @player.update(player_params)
-    redirect_to players_path
+    redirect_to session.delete(:return_to)
   end
 
   def new

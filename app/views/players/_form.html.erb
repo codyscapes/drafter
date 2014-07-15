@@ -51,7 +51,10 @@
       <%= f.label "Drafted Status:" %>
       <%= f.text_field :drafted %>
     </div>
-
+    <div class="form-group">
+      <%= f.label "Team ID:" %>
+      <%= f.text_field :team_id %>
+    </div>
     <%= f.file_field :avatar %>
 
     <%= f.submit 'Add Player', :class => "btn btn-info" %>
