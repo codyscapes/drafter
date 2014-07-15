@@ -7,6 +7,7 @@ User Stories:
 
 Backlog
 =======
+* Show the players selected from each team
 * Search with SPA (angular or ember)
 * Load working database w/ pictures
 * Integrate ESPN API to show player info

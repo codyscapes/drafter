@@ -31,7 +31,7 @@
 
   .player_pic {
   	height: 200px;
-		outline: 2px solid black;
+  	width: 229px;
   }
 
 	.under_player_options {
@@ -39,9 +39,13 @@
 		margin-top: 0px;
 	}
 
-
 	#recommendations {
 		height: 400px;
+	}
+
+	#rec_title {
+		text-align: center;
+		text-decoration: underline;
 	}
 
 	.master_list {

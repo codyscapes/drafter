@@ -44,13 +44,14 @@
 
   <div class='col-lg-8'>
     <div id='recommendations'>
-      <p> Player rec's:</p>
+      <p id='rec_title'> BEST AVAILABLE:</p>
 
         <div class = 'row'>
           <% @draft.best_available.each do |player| %>
             <div class = 'col-lg-4'>
               <div class='player_box'>
                 <div class='player_pic'>
+                  <%= image_tag player.avatar.url(:medium) %>
                 </div>
                 Player: <%= player.name %></br>
                 Team: <%= player.team %></br>
