@@ -14,15 +14,23 @@
 
 	<div class='col-lg-6'>
 		<h2> Copies: </h2>
-		<% @copied_players.each do |player| %>
-			<ul id='player_list'>
-				<li>
-					<%= link_to player.name, edit_player_path(player) %></br>
-				</li>
-			</ul>
-		<% end %>
+
+		<table>
+			<tr>
+				<th>Name</th>
+			</tr>
+			<% @copied_players.each do |player| %>
+				<tr>
+					<td> <%= check_box_tag 'player_ids[]', player.id %> </td>
+					<td> <%= player.name %> </td>
+					<td> <%= link_to 'Edit', edit_player_path(player) %> </td>
+					<td> <%= link_to 'Destroy', player, method: :delete %> </td>
+				</tr>
+			<% end %>
+		</table>
 	</div>
 </div>
 
 
-<%= link_to "New Player", new_player_path, :class => "btn btn-success", id: "new_link" %>
+<%= link_to "New Player", new_player_path, :class => "btn btn-success" %>
+

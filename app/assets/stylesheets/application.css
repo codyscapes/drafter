@@ -206,3 +206,8 @@
 	text-align: center;
 }
 
+td {
+	float: left;
+	margin-left: 10px
+}
+

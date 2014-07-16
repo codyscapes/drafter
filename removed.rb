@@ -512,3 +512,12 @@ From show view:
   <%= link_to 'Draft', player_path(player, "player[team_id]" => @draft.order[0].id, "player[drafted]" => true), :method => :patch, :class => "btn btn-success" %>
 
 
+
+From player index:
+
+      <!-- <ul id='player_list'>
+        <li>
+          <%= link_to player.name, edit_player_path(player) %></br>
+        </li>
+      </ul> -->
+

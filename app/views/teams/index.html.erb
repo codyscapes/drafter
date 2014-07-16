@@ -10,17 +10,29 @@
 				</li>
 			</ul>
 		<% end %>
+
+		<%= link_to "New Team", new_team_path, :class => "btn btn-success" %>
+
 	</div>
 
 	<div class='col-lg-6'>
 		<h1> Copies </h2>
-		<% @copied_teams.each do |team| %>
-			<li>
-				<%= team.team_name %>
-			</li>
-		<% end %>
+
+		<table>
+			<tr>
+				<th>Name</th>
+			</tr>
+			<% @copied_teams.each do |team| %>
+				<tr>
+					<td> <%= check_box_tag 'team_ids[]', team.id %> </td>
+					<td> <%= team.team_name %> </td>
+					<td> <%= link_to 'Edit', edit_team_path(team) %> </td>
+					<td> <%= link_to 'Destroy', team, method: :delete %> </td>
+				</tr>
+			<% end %>
+		</table>
+		<%= link_to "DESTROY ALL COPIES", :class => "btn btn-danger" %>
 	</div>
 </div>
 
 
-<%= link_to "New Team", new_team_path, :class => "btn btn-success", id: "new_link" %>
