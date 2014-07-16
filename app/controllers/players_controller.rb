@@ -1,7 +1,8 @@
 class PlayersController < ApplicationController
   def index
-    @master_players = Player.all.where(master: true)
-    @copied_players = Player.all.where(master: false)
+    @player = Player.all
+    @master_players = @player.master
+    @copied_players = @player.copy
   end
 
   def show

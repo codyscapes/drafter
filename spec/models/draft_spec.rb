@@ -121,7 +121,7 @@ RSpec.describe Draft, :type => :model do
 			reggie = FactoryGirl.create(:reggie_bush)
 			draft = FactoryGirl.create(:two_team_draft)
 			draft.start()
-			draft.pick(drafted_player).should eq 'please choose a player who has not been drafted!'
+			draft.pick(drafted_player).should eq false
 		end
 
 		it "drafts a player from the available_players array by changing the team number to the current team's ID" do

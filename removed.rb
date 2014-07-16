@@ -508,3 +508,7 @@ DRAFT SPECS
 
 
 
+From show view:
+  <%= link_to 'Draft', player_path(player, "player[team_id]" => @draft.order[0].id, "player[drafted]" => true), :method => :patch, :class => "btn btn-success" %>
+
+

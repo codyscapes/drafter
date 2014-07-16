@@ -28,12 +28,12 @@
   <div class='col-lg-2 master_list'>
     <div id='player_list'>
 
-      <p> Player List </p>
+      <p> Master List </p>
 
 
 
       <ul>
-        <% @draft.players.each do |player| %>
+        <% @players.each do |player| %>
           <li><%= player.name %></li>
         <% end %>
       </ul>
@@ -47,7 +47,7 @@
       <p id='rec_title'> BEST AVAILABLE:</p>
 
         <div class = 'row'>
-          <% @draft.best_available.each do |player| %>
+          <% @best_available.each do |player| %>
             <div class = 'col-lg-4'>
               <div class='player_box'>
                 <div class='player_pic'>
@@ -61,8 +61,6 @@
 
 
                 <%= link_to 'Draft', player_path(player, "player[team_id]" => @draft.order[0].id, "player[drafted]" => true), :method => :patch, :class => "btn btn-success" %>
-
-
                 <%= link_to 'Remove', player, method: :delete, :class => "btn btn-danger" %>
 
 

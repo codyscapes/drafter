@@ -77,13 +77,13 @@ class Draft < ActiveRecord::Base
 
 	def pick(player)
 		if player.drafted == true
-			return 'please choose a player who has not been drafted!'
-		else
-			player.team_id = @order[0].id
-			player.drafted = true
-			@order.shift
-			player
+			return false
 		end
+
+		player.team_id = @order[0].id
+		player.drafted = true
+		@order.shift
+		player
 	end
 
 	def best_available

@@ -1,12 +1,26 @@
 <h1> TEAMS! </h1>
 
-<% @teams.each do |team| %>
-	<ul id='team_list'>
-		<li>
-			<%= link_to team.team_name, edit_team_path(team) %></br>
-		</li>
-	</ul>
-<% end %>
+<div class='row'>
+	<div class='col-lg-6'>
+		<h1> Templates </h1>
+		<% @template_teams.each do |team| %>
+			<ul id='team_list'>
+				<li>
+					<%= link_to team.team_name, edit_team_path(team) %></br>
+				</li>
+			</ul>
+		<% end %>
+	</div>
+
+	<div class='col-lg-6'>
+		<h1> Copies </h2>
+		<% @copied_teams.each do |team| %>
+			<li>
+				<%= team.team_name %>
+			</li>
+		<% end %>
+	</div>
+</div>
 
 
 <%= link_to "New Team", new_team_path, :class => "btn btn-success", id: "new_link" %>
