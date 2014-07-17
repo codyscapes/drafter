@@ -8,15 +8,13 @@ class Pick < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :draft
 
+	attr_reader :draft_object, :player_object
+
 	after_save :run
 
 	def run
 		set_player_object
 		set_draft_object
-	end
-
-	def baseball
-		@baseball
 	end
 
 	def set_player_object
@@ -29,14 +27,6 @@ class Pick < ActiveRecord::Base
 
 	def set_draft_object
 		@draft_object = Draft.find(self.draft_id)
-	end
-
-	def player_object
-		@player_object
-	end
-
-	def draft_object
-		@draft_object
 	end
 
 	def available_players
