@@ -70,31 +70,4 @@ RSpec.describe Pick, :type => :model do
 			pick.draft_object.should eq draft
 		end
 	end
-
-	# describe 'draft_player' do
-	# 	it 'should move the player from available to drafted in a given draft' do
-	# 		draft = FactoryGirl.create(:draft)
-	# 		team1 = FactoryGirl.create(:team)
-	# 		team2 = FactoryGirl.create(:team_two)
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		draft.start()
-	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-	# 		pick.draft_player
-	# 		draft.available_players.should eq [reggie]
-	# 	end
-	# end
-
-	# describe 'available_players' do
-	# 	it 'should return the available players in the draft' do
-	# 		draft = FactoryGirl.create(:draft)
-	# 		team1 = FactoryGirl.create(:team)
-	# 		team2 = FactoryGirl.create(:team_two)
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		draft.start()
-	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-	# 		pick.available_players.should eq [reggie]
-	# 	end
-	# end
 end

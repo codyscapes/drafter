@@ -8,11 +8,6 @@ class Pick < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :draft
 
-	# def change_drafted_status
-	# 	print @player_object.name
-	# 	@player_object.change_drafted_status
-	# end
-
 	def player_object
 		Player.find(self.player_id)
 	end

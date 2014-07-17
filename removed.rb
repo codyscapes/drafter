@@ -617,3 +617,113 @@ FROM DRaft SPECS
 #   #     draft.order[0].team_name.should eq 'team_two'
 #   #   end
 #   # end
+
+
+
+DRAFT SPECS
+
+
+
+    # describe 'draft_player' do
+    #   it 'should move a player from the available array to the drafted array' do
+
+    #   end
+    # end
+
+
+
+  # describe 'available_players' do
+  #   it 'should return all players who have not been drafted in the draft' do
+  #     draft = FactoryGirl.create(:two_team_draft)
+  #     team = FactoryGirl.create(:team)
+  #     team2 = FactoryGirl.create(:team_two)
+  #     cam = FactoryGirl.create(:player)
+  #     reggie = FactoryGirl.create(:reggie_bush)
+  #     draft.start()
+  #     pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+  #     draft.available_players.should eq [reggie]
+  #   end
+  # end
+
+
+
+
+#   describe 'best_available' do
+#     it 'should return an array of the best players available in the draft' do
+#       cam = FactoryGirl.create(:player)
+#       reggie = FactoryGirl.create(:reggie_bush)
+#       jamaal = FactoryGirl.create(:jamaal_charles)
+#       forte = FactoryGirl.create(:matt_forte)
+#       rice = FactoryGirl.create(:ray_rice)
+#       dud = FactoryGirl.create(:dud)
+#       draft = FactoryGirl.create(:draft)
+#       draft.start()
+#       draft.best_available.should eq [jamaal, forte, reggie]
+#     end
+
+#     # it 'should return an array of the best players STILL available in the draft' do
+#     #   jamaal = FactoryGirl.create(:jamaal_charles)
+#     #   cam = FactoryGirl.create(:player)
+#     #   reggie = FactoryGirl.create(:reggie_bush)
+#     #   forte = FactoryGirl.create(:matt_forte)
+#     #   rice = FactoryGirl.create(:ray_rice)
+#     #   dud = FactoryGirl.create(:dud)
+#     #   draft = FactoryGirl.create(:two_team_draft)
+#     #   team = FactoryGirl.create(:team)
+#     #   team2 = FactoryGirl.create(:team_two)
+#     #   draft.start()
+#     #   draft.pick(draft.players[0])
+#     #   draft.best_available.should eq [forte, reggie, cam]
+#     # end
+#   end
+
+#   describe 'number_of_teams' do
+#     it 'should return the number of teams' do
+#       draft = FactoryGirl.create(:draft)
+#       draft.number_of_teams.should eq 12
+#     end
+  # end
+
+
+PICKS SPECS
+
+  # describe 'print PPTD' do
+  #   it 'should print the PPTD for the draft' do
+  #     draft = FactoryGirl.create(:draft)
+  #     team1 = FactoryGirl.create(:team)
+  #     team2 = FactoryGirl.create(:team_two)
+  #     cam = FactoryGirl.create(:player)
+  #     reggie = FactoryGirl.create(:reggie_bush)
+  #     draft.start()
+  #     pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+  #     pick.draft_stats('PPTD').should eq 4
+  #   end
+  # end
+
+
+  # describe 'draft_player' do
+  #   it 'should move the player from available to drafted in a given draft' do
+  #     draft = FactoryGirl.create(:draft)
+  #     team1 = FactoryGirl.create(:team)
+  #     team2 = FactoryGirl.create(:team_two)
+  #     cam = FactoryGirl.create(:player)
+  #     reggie = FactoryGirl.create(:reggie_bush)
+  #     draft.start()
+  #     pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+  #     pick.draft_player
+  #     draft.available_players.should eq [reggie]
+  #   end
+  # end
+
+  # describe 'available_players' do
+  #   it 'should return the available players in the draft' do
+  #     draft = FactoryGirl.create(:draft)
+  #     team1 = FactoryGirl.create(:team)
+  #     team2 = FactoryGirl.create(:team_two)
+  #     cam = FactoryGirl.create(:player)
+  #     reggie = FactoryGirl.create(:reggie_bush)
+  #     draft.start()
+  #     pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+  #     pick.available_players.should eq [reggie]
+  #   end
+  # end
