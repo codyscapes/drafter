@@ -11,7 +11,6 @@ FactoryGirl.define do
     adp 84
     tier 3
     drafted false
-    team_id 1
 
   	factory :reggie_bush do
 	  	name 'Reggie Bush'

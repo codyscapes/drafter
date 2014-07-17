@@ -14,7 +14,7 @@ class Player < ActiveRecord::Base
   scope :master, -> { where(master: true) }
   scope :copy, -> { where(master: false) }
 
-  has_many :player_teams
-  has_many :teams, :through => :player_teams
+  has_many :players_teams
+  has_many :teams, through: :picks
 
 end

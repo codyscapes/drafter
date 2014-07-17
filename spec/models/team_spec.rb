@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Team, :type => :model do
 
-	it { should have_many :players }
+
+
+
+	# it { should have_many (:players) }
+	# it { should have_many (:players_teams)}
 
 	describe 'team_name' do
 		it 'should return the name of the team' do
