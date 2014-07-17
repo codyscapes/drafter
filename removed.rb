@@ -535,3 +535,85 @@ From player model:
 
 
 
+
+
+From Draft.rb
+
+  def drafted_players
+    drafted_players = []
+
+    @players.each do |player|
+      if player.drafted == true
+        drafted_players << player
+      end
+    end
+    drafted_players
+  end
+
+  def available_players
+    available_players = []
+
+    @players.each do |player|
+      if player.drafted == false
+        available_players << player
+      end
+    end
+    available_players
+  end
+
+
+
+  def pick(player)
+    if player.drafted == true
+      return false
+    end
+
+    player.team_id = @order[0].id
+    player.drafted = true
+    @order.shift
+    player
+  end
+
+
+
+FROM Player SPECS
+  describe 'change_drafted_status' do
+    it "should change the player's drafted status from false to true" do
+      player = FactoryGirl.create(:player)
+      player.change_drafted_status
+      player.drafted.should eq true
+    end
+  end
+
+FROM DRaft SPECS
+#   # describe 'pick' do
+#   #   it 'will not execute if the player has a drafted status of true' do
+#   #     drafted_player = FactoryGirl.create(:drafted_player)
+#   #     cam = FactoryGirl.create(:player)
+#   #     reggie = FactoryGirl.create(:reggie_bush)
+#   #     draft = FactoryGirl.create(:two_team_draft)
+#   #     draft.start()
+#   #     draft.pick(drafted_player).should eq false
+#   #   end
+
+
+#   #   it 'drafts a player from the available_players array and changes their drafted status to true' do
+#   #       draft = FactoryGirl.create(:two_team_draft)
+#   #       player = FactoryGirl.create(:player)
+#   #       team = FactoryGirl.create(:team)
+#   #       team2 = FactoryGirl.create(:team_two)
+#   #       draft.start()
+#   #       draft.pick(draft.players[0])
+#   #       draft.players[0].drafted.should eq true
+#   #     end
+
+#   #   it 'cycles the order to the next team by deleting the current team from the order array.' do
+#   #     draft = FactoryGirl.create(:two_team_draft)
+#   #     player = FactoryGirl.create(:player)
+#   #     team = FactoryGirl.create(:team)
+#   #     team2 = FactoryGirl.create(:team_two)
+#   #     draft.start()
+#   #     draft.pick(draft.players[0])
+#   #     draft.order[0].team_name.should eq 'team_two'
+#   #   end
+#   # end

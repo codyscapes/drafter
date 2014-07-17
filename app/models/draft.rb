@@ -5,15 +5,17 @@ class Draft < ActiveRecord::Base
 	has_many :players, through: :picks
 
 	def start
-		@players = []
+		@available_players = []
+		@drafted_players = []
 		@order = []
 		@teams = []
 		@current_pick = 1
 		@rounds = 16
 
 		self.set_teams()
-		self.set_players()
+		self.set_available_players()
 		self.set_order()
+
 	end
 
 	def set_teams()
@@ -26,9 +28,9 @@ class Draft < ActiveRecord::Base
 		@teams
 	end
 
-	def set_players()
+	def set_available_players()
 		Player.all.each do |player|
-			@players << player
+			@available_players << player
 		end
 	end
 
@@ -49,60 +51,50 @@ class Draft < ActiveRecord::Base
 		@order
 	end
 
-	def set_players()
-		Player.all.each do |player|
-			@players << player
+
+	def refresh_available_players
+
+		@picks_in_current_draft = Pick.where(draft_id: self.id)
+
+		if @picks_in_current_draft == nil
+			return @players
+		else
+			@players.each do |player|
+				@picks_in_current_draft.each do |pick|
+					if player.id == pick.player_id
+						@drafted_players << player
+					else
+						@available_players << player
+					end
+				end
+			end
 		end
+
+		@available_players
+
+	end
+
+
+
+  def best_available
+
+    best_players_available = []
+
+    if self.ranking_method == 'beer_value'
+      best_players_available = self.available_players.sort { |b,a| a.beer_value <=> b.beer_value }
+    end
+
+    return best_players_available[0], best_players_available[1], best_players_available[2]
+
+  end
+
+
+	def available_players
+		@available_players
 	end
 
 	def drafted_players
-		drafted_players = []
-
-		@players.each do |player|
-			if player.drafted == true
-				drafted_players << player
-			end
-		end
-		drafted_players
-	end
-
-	def available_players
-		available_players = []
-
-		@players.each do |player|
-			if player.drafted == false
-				available_players << player
-			end
-		end
-		available_players
-	end
-
-
-	def pick(player)
-		if player.drafted == true
-			return false
-		end
-
-		player.team_id = @order[0].id
-		player.drafted = true
-		@order.shift
-		player
-	end
-
-	def best_available
-
-		best_players_available = []
-
-		if self.ranking_method == 'beer_value'
-			best_players_available = self.available_players.sort { |b,a| a.beer_value <=> b.beer_value }
-		end
-
-		return best_players_available[0], best_players_available[1], best_players_available[2]
-
-	end
-
-	def players
-		@players
+		@drafted_players
 	end
 
 	def order

@@ -17,12 +17,6 @@ class Player < ActiveRecord::Base
   has_many :picks
   has_many :teams, through: :picks
 
-	def change_drafted_status
-		if self.drafted == false
-			self.drafted = true
-		else
-			self.drafted = false
-		end
-	end
+
 
 end
