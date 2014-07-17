@@ -8,16 +8,38 @@ class Pick < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :draft
 
+	after_save :run
+
+	def run
+		set_player_object
+		set_draft_object
+	end
+
+	def baseball
+		@baseball
+	end
+
+	def set_player_object
+		@player_object = Player.find(self.player_id)
+	end
+
+	def draft_type
+		@draft_object.draft_type
+	end
+
+	def set_draft_object
+		@draft_object = Draft.find(self.draft_id)
+	end
+
 	def player_object
-		Player.find(self.player_id)
+		@player_object
 	end
 
 	def draft_object
-		Draft.find(self.draft_id)
+		@draft_object
 	end
 
 	def available_players
-		print self.draft_object.available_players
-		# self.draft_object.available_players
+		@draft_object.available_players
 	end
 end

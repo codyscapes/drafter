@@ -15,7 +15,6 @@ class Draft < ActiveRecord::Base
 		self.set_teams
 		self.set_available_players
 		self.set_order
-
 	end
 
 
