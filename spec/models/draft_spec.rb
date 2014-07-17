@@ -9,7 +9,7 @@ RSpec.describe Draft, :type => :model do
 
 
 	describe 'start' do
-		it 'should have an array of players' do
+		it 'should have an array of all available players' do
 			cam = FactoryGirl.create(:player)
 			draft = FactoryGirl.create(:draft)
 			draft.start
@@ -20,6 +20,14 @@ RSpec.describe Draft, :type => :model do
 			draft = FactoryGirl.create(:draft)
 			draft.start
 			draft.current_pick.should eq 1
+		end
+
+		it 'should set the order of the draft' do
+			draft = FactoryGirl.create(:two_team_draft)
+			team1 = FactoryGirl.create(:team)
+			team2 = FactoryGirl.create(:team_two)
+			draft.start
+			draft.order[2].should eq draft.teams[1]
 		end
 	end
 
