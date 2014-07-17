@@ -4,6 +4,8 @@ class Draft < ActiveRecord::Base
 	has_many :picks
 	has_many :players, through: :picks
 
+	attr_reader :available_players, :drafted_players, :order, :teams, :current_pick, :rounds, :rounds
+
 	def start
 		@available_players = []
 		@drafted_players = []
@@ -84,28 +86,4 @@ class Draft < ActiveRecord::Base
 
   end
 
-
-	def available_players
-		@available_players
-	end
-
-	def drafted_players
-		@drafted_players
-	end
-
-	def order
-		@order
-	end
-
-	def teams
-		@teams
-	end
-
-	def rounds
-		@rounds
-	end
-
-	def current_pick
-		@current_pick
-	end
 end
