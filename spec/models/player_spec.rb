@@ -11,6 +11,9 @@ RSpec.describe Player, :type => :model do
   it { should validate_presence_of :position}
   it { should validate_presence_of :beer_value}
 
+  it {should have_many(:teams).through(:picks)}
+  it { should have_many(:picks)}
+
 	it 'should initialize with a name' do
 		player = FactoryGirl.create(:player)
 		player.name.should eq "Cam Newton"

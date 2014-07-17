@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe Draft, :type => :model do
 
 	it { should have_many :teams }
-	# it { should have_many :players_teams}
+	it { should have_many :picks }
+	it { should have_many(:players).through(:picks)}
+
+
 
 	describe 'start' do
 		it 'should have an array of players' do

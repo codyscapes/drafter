@@ -2,6 +2,7 @@ class Draft < ActiveRecord::Base
 
 	has_many :teams
 	has_many :picks
+	has_many :players, through: :picks
 
 	def start
 		@players = []
