@@ -15,6 +15,12 @@ RSpec.describe Draft, :type => :model do
 			draft.start
 			draft.players.should eq [cam]
 		end
+
+		it 'should have current pick set to 1' do
+			draft = FactoryGirl.create(:draft)
+			draft.start
+			draft.current_pick.should eq 1
+		end
 	end
 
 

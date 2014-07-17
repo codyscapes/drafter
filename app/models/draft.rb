@@ -8,6 +8,7 @@ class Draft < ActiveRecord::Base
 		@players = []
 		@order = []
 		@teams = []
+		@current_pick = 1
 		@rounds = 16
 
 		self.set_teams()
@@ -114,5 +115,9 @@ class Draft < ActiveRecord::Base
 
 	def rounds
 		@rounds
+	end
+
+	def current_pick
+		@current_pick
 	end
 end
