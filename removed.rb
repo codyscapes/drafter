@@ -521,3 +521,17 @@ From player index:
         </li>
       </ul> -->
 
+
+From player model:
+
+  def change_drafted_status
+    if self.drafted == false
+      self.drafted = true
+    else
+      self.drafted = false
+    end
+  end
+
+
+
+

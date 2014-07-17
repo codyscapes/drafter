@@ -28,4 +28,13 @@ RSpec.describe Player, :type => :model do
 		player = FactoryGirl.create(:player)
 		player.drafted.should eq false
 	end
+
+
+  describe 'change_drafted_status' do
+  	it "should change the player's drafted status from false to true"	do
+ 			player = FactoryGirl.create(:player)
+ 			player.change_drafted_status
+ 			player.drafted.should eq true
+ 		end
+  end
 end
