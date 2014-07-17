@@ -115,6 +115,12 @@ RSpec.describe Draft, :type => :model do
 			end
 		end
 
+		# describe 'draft_player' do
+		# 	it 'should move a player from the available array to the drafted array' do
+
+		# 	end
+		# end
+
 
 
 	# describe 'available_players' do

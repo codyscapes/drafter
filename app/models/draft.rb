@@ -12,13 +12,14 @@ class Draft < ActiveRecord::Base
 		@current_pick = 1
 		@rounds = 16
 
-		self.set_teams()
-		self.set_available_players()
-		self.set_order()
+		self.set_teams
+		self.set_available_players
+		self.set_order
 
 	end
 
-	def set_teams()
+
+	def set_teams
 		Team.where(draft_id: 0).each do |team|
 			if team.draft_position <= self.number_of_teams
 				new_team = Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id)
@@ -28,13 +29,13 @@ class Draft < ActiveRecord::Base
 		@teams
 	end
 
-	def set_available_players()
+	def set_available_players
 		Player.all.each do |player|
 			@available_players << player
 		end
 	end
 
-	def set_order()
+	def set_order
 		@rounds.times do |number|
 			if number.even?
 				@teams.each do |team|
@@ -69,12 +70,8 @@ class Draft < ActiveRecord::Base
 				end
 			end
 		end
-
 		@available_players
-
 	end
-
-
 
   def best_available
 
