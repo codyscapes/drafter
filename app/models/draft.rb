@@ -6,6 +6,8 @@ class Draft < ActiveRecord::Base
 
 	attr_reader :available_players, :drafted_players, :order, :teams, :current_pick, :rounds, :rounds, :picked_players
 
+	after_initialize :start
+
 	def start
 		@available_players = []
 		@drafted_players = []
