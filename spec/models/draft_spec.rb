@@ -114,4 +114,28 @@ RSpec.describe Draft, :type => :model do
 			draft.order[23].should eq draft.teams[0]
 		end
 	end
+
+	# describe 'refresh_available_players' do
+	# 	it 'should return all players if there have been no picks' do
+	# 		draft = FactoryGirl.create(:draft)
+	# 		team1 = FactoryGirl.create(:team)
+	# 		team2 = FactoryGirl.create(:team_two)
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		draft.start()
+	# 		draft.refresh_available_players.should eq [cam, reggie]
+	# 	end
+
+	# 	it 'should update the players array and remove players who have been picked' do
+	# 		draft = FactoryGirl.create(:draft)
+	# 		team1 = FactoryGirl.create(:team)
+	# 		team2 = FactoryGirl.create(:team_two)
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		draft.start()
+	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+	# 		print pick.id
+	# 		draft.refresh_available_players.should eq cam.name
+	# 	end
+	# end
 end

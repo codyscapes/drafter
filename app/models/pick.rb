@@ -29,7 +29,7 @@ class Pick < ActiveRecord::Base
 		@draft_object = Draft.find(self.draft_id)
 	end
 
-	def available_players
-		@draft_object.available_players
-	end
+	# def available_players
+	# 	@draft_object.available_players
+	# end
 end

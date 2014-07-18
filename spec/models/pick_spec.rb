@@ -43,10 +43,8 @@ RSpec.describe Pick, :type => :model do
 	  	pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
 	  	pick.team_id.should eq draft.teams[0].id
 		end
-	end
 
-	describe 'player_object' do
-		it 'should return the player object of the player being picked' do
+		it 'should be created with the correct draft position' do
 			draft = FactoryGirl.create(:two_team_draft)
 			team1 = FactoryGirl.create(:team)
 			team2 = FactoryGirl.create(:team_two)
@@ -54,61 +52,88 @@ RSpec.describe Pick, :type => :model do
 			reggie = FactoryGirl.create(:reggie_bush)
 			draft.start()
 			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.player_object.should eq cam
+			pick.draft_position.should eq draft.draft_position
 		end
 	end
 
-	describe 'draft_object' do
-		it 'should move the player from available to drafted in a given draft' do
-			draft = FactoryGirl.create(:draft)
-			team1 = FactoryGirl.create(:team)
-			team2 = FactoryGirl.create(:team_two)
-			cam = FactoryGirl.create(:player)
-			reggie = FactoryGirl.create(:reggie_bush)
-			draft.start()
-			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.draft_object.should eq draft
-		end
-	end
+# 	describe 'player_object' do
+# 		it 'should return the player object of the player being picked' do
+# 			draft = FactoryGirl.create(:two_team_draft)
+# 			team1 = FactoryGirl.create(:team)
+# 			team2 = FactoryGirl.create(:team_two)
+# 			cam = FactoryGirl.create(:player)
+# 			reggie = FactoryGirl.create(:reggie_bush)
+# 			draft.start()
+# 			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+# 			pick.player_object.should eq cam
+# 		end
+# 	end
 
-	describe 'run' do
-		it 'should run run when created' do
-			draft = FactoryGirl.create(:draft)
-			team1 = FactoryGirl.create(:team)
-			team2 = FactoryGirl.create(:team_two)
-			cam = FactoryGirl.create(:player)
-			reggie = FactoryGirl.create(:reggie_bush)
-			draft.start()
-			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.draft_object.should eq draft
-		end
-	end
+# 	describe 'draft_object' do
+# 		it 'should move the player from available to drafted in a given draft' do
+# 			draft = FactoryGirl.create(:draft)
+# 			team1 = FactoryGirl.create(:team)
+# 			team2 = FactoryGirl.create(:team_two)
+# 			cam = FactoryGirl.create(:player)
+# 			reggie = FactoryGirl.create(:reggie_bush)
+# 			draft.start()
+# 			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+# 			pick.draft_object.should eq draft
+# 		end
+# 	end
+
+# 	describe 'run' do
+# 		it 'should run run when created' do
+# 			draft = FactoryGirl.create(:draft)
+# 			team1 = FactoryGirl.create(:team)
+# 			team2 = FactoryGirl.create(:team_two)
+# 			cam = FactoryGirl.create(:player)
+# 			reggie = FactoryGirl.create(:reggie_bush)
+# 			draft.start()
+# 			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+# 			pick.draft_object.should eq draft
+# 		end
+# 	end
 
 
-	describe 'draft_type' do
-		it 'should tell the type of draft' do
-			draft = FactoryGirl.create(:draft)
-			team1 = FactoryGirl.create(:team)
-			team2 = FactoryGirl.create(:team_two)
-			cam = FactoryGirl.create(:player)
-			reggie = FactoryGirl.create(:reggie_bush)
-			draft.start()
-			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.draft_type.should eq draft.draft_type
-		end
-	end
+# 	describe 'draft_type' do
+# 		it 'should tell the type of draft' do
+# 			draft = FactoryGirl.create(:draft)
+# 			team1 = FactoryGirl.create(:team)
+# 			team2 = FactoryGirl.create(:team_two)
+# 			cam = FactoryGirl.create(:player)
+# 			reggie = FactoryGirl.create(:reggie_bush)
+# 			draft.start()
+# 			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+# 			pick.draft_type.should eq draft.draft_type
+# 		end
+# 	end
 
-	describe 'available_players' do
-		it 'should tell the avilable players in the draft' do
-			draft = FactoryGirl.create(:draft)
-			team1 = FactoryGirl.create(:team)
-			team2 = FactoryGirl.create(:team_two)
-			cam = FactoryGirl.create(:player)
-			reggie = FactoryGirl.create(:reggie_bush)
-			draft.start()
-			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			print draft.available_players
-			pick.available_players.should eq [reggie]
-		end
-	end
+# 	describe 'set_draft_object' do
+# 		it 'should return the available players' do
+# 			draft = FactoryGirl.create(:draft)
+# 			team1 = FactoryGirl.create(:team)
+# 			team2 = FactoryGirl.create(:team_two)
+# 			cam = FactoryGirl.create(:player)
+# 			reggie = FactoryGirl.create(:reggie_bush)
+# 			draft.start()
+# 			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+# 			pick.set_draft_object.should eq draft
+# 		end
+# 	end
 end
+
+# 	# describe 'available_players' do
+# 	# 	it 'should tell the avilable players in the draft' do
+# 	# 		draft = FactoryGirl.create(:draft)
+# 	# 		team1 = FactoryGirl.create(:team)
+# 	# 		team2 = FactoryGirl.create(:team_two)
+# 	# 		cam = FactoryGirl.create(:player)
+# 	# 		reggie = FactoryGirl.create(:reggie_bush)
+# 	# 		draft.start()
+# 	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+# 	# 		print draft.available_players
+# 	# 		pick.available_players.should eq []
+# 	# 	end
+# 	# end
+
