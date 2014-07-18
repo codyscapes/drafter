@@ -750,3 +750,16 @@ FROM DRAFT spec
     # end
     # @available_players
   end
+
+
+  describe 'draft_type' do
+    it 'should tell the type of draft' do
+      team1 = FactoryGirl.create(:team)
+      team2 = FactoryGirl.create(:team_two)
+      cam = FactoryGirl.create(:player)
+      reggie = FactoryGirl.create(:reggie_bush)
+      draft = FactoryGirl.create(:draft)
+      pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+      pick.draft_type.should eq draft.draft_type
+    end
+  end

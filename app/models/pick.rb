@@ -10,23 +10,14 @@ class Pick < ActiveRecord::Base
 
 	attr_reader :draft_object, :player_object
 
-	after_save :run
+	after_save :set_objects
 
-	def run
-		set_player_object
-		set_draft_object
-	end
-
-	def set_player_object
+	def set_objects
 		@player_object = Player.find(self.player_id)
-	end
-
-	def set_draft_object
 		@draft_object = Draft.find(self.draft_id)
 	end
 
-	def available_players
-		@draft_object.start
-		@draft_object.available_players
+	def available_players(draft_object)
+		draft_object.available_players
 	end
 end
