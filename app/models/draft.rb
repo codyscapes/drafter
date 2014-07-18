@@ -58,24 +58,6 @@ class Draft < ActiveRecord::Base
 	end
 
 
-	def refresh_available_players
-		@picked_players.id
-		# if @picks_in_current_draft == nil
-		# 	return @players
-		# else
-		# 	@available_players.each do |player|
-		# 		@picks_in_current_draft.each do |pick|
-		# 			if player.id == pick.player_id
-		# 				@drafted_players << player
-		# 			else
-		# 				@available_players << player
-		# 			end
-		# 		end
-		# 	end
-		# end
-		# @available_players
-	end
-
   def best_available
 
     best_players_available = []

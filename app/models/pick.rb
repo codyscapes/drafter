@@ -21,15 +21,12 @@ class Pick < ActiveRecord::Base
 		@player_object = Player.find(self.player_id)
 	end
 
-	def draft_type
-		@draft_object.draft_type
-	end
-
 	def set_draft_object
 		@draft_object = Draft.find(self.draft_id)
 	end
 
-	# def available_players
-	# 	@draft_object.available_players
-	# end
+	def available_players
+		@draft_object.start
+		@draft_object.available_players
+	end
 end
