@@ -100,17 +100,17 @@ RSpec.describe Pick, :type => :model do
 	# 	end
 	# end
 
-	describe 'test that shows the drafts are the same' do
-		it 'should show that the draft id created in the spec is the same draft id that is associated in Pick.rb' do
-			team1 = FactoryGirl.create(:team)
-			team2 = FactoryGirl.create(:team_two)
-			cam = FactoryGirl.create(:player)
-			reggie = FactoryGirl.create(:reggie_bush)
-			draft = FactoryGirl.create(:two_team_draft)
-			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.draft.should eq draft
-		end
-	end
+	# describe 'test that shows the drafts are the same' do
+	# 	it 'should show that the draft id created in the spec is the same draft id that is associated in Pick.rb' do
+	# 		team1 = FactoryGirl.create(:team)
+	# 		team2 = FactoryGirl.create(:team_two)
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+	# 		pick.draft.should eq draft
+	# 	end
+	# end
 
 	describe 'available_players_returns_nil' do
 		it 'should tell the avilable players in the draft' do
@@ -124,17 +124,17 @@ RSpec.describe Pick, :type => :model do
 		end
 	end
 
-	describe 'available_players_working' do
-		it 'should tell the avilable players in the draft' do
-			team1 = FactoryGirl.create(:team)
-			team2 = FactoryGirl.create(:team_two)
-			cam = FactoryGirl.create(:player)
-			reggie = FactoryGirl.create(:reggie_bush)
-			draft = FactoryGirl.create(:two_team_draft)
-			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.available_players_working.should eq [cam, reggie]
-		end
-	end
+	# describe 'available_players_working' do
+	# 	it 'should tell the avilable players in the draft' do
+	# 		team1 = FactoryGirl.create(:team)
+	# 		team2 = FactoryGirl.create(:team_two)
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+	# 		pick.available_players_working.should eq [cam, reggie]
+	# 	end
+	# end
 end
 
 

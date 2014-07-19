@@ -11,12 +11,13 @@ class Pick < ActiveRecord::Base
 	attr_reader :draft_object, :player_object
 
 	def available_players_returns_nil
-		draft.available_players
+		print drafts
+		# draft.available_players
 	end
 
 	def available_players_working
-		draft.start
-		draft.available_players
+		# draft.start
+		# draft.available_players
 	end
 
 end
