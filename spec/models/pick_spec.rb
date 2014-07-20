@@ -74,6 +74,20 @@ RSpec.describe Pick, :type => :model do
 			pick.player.should eq cam
 		end
 	end
+
+	describe 'available_players' do
+		it 'should tell the available players in the draft object' do
+			draft = FactoryGirl.create(:two_team_draft)
+			team1 = FactoryGirl.create(:team)
+			team2 = FactoryGirl.create(:team_two)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			draft.start()
+			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
+			pick.available_players(draft).should eq [reggie]
+		end
+	end
+
 end
 
 

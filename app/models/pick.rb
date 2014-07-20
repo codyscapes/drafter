@@ -12,7 +12,7 @@ class Pick < ActiveRecord::Base
 
 
 	def available_players(draft_var)
-		draft_var.available_players
+		draft_var.update_available_players(draft_var)
 	end
 
 

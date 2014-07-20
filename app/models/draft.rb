@@ -54,9 +54,21 @@ class Draft < ActiveRecord::Base
 		@order
 	end
 
-	def picked_players
-		@picked_players = Pick.where(draft_id: self.id)
+	def update_available_players(draft)
+
+		@available_players.each do |player|
+			Pick.all.each do |pick|
+				if pick.player == player
+					@drafted_players << player
+					@available_players.delete(player)
+				end
+			end
+		end
+
+		@available_players
+
 	end
+
 
 
   def best_available
