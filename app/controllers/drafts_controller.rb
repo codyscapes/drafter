@@ -13,14 +13,11 @@ class DraftsController < ApplicationController
 
   def edit
     @draft = Draft.find(params[:id])
-    params[:player]
-    @draft.pick(player)
   end
 
   def update
     redirect_to session.delete(:return_to)
     @draft = Draft.find(params[:id])
-    # @player = Player.find(params[:id])
     @draft = Draft.update(draft_params)
     session[:return_to] = request.referer
   end
@@ -33,6 +30,7 @@ class DraftsController < ApplicationController
     else
       render 'new'
     end
+
   end
 
 
@@ -47,7 +45,7 @@ private
   end
 
   def player_params
-    params.require(:player).permit(:name, :team, :points_2013, :bye_week, :adp, :tier, :position, :beer_value, :drafted, :id, :avatar, :master)
+    params.require(:player).permit(:name, :team, :points_2013, :bye_week, :adp, :tier, :position, :beer_value, :id, :avatar, :master)
   end
 
 end

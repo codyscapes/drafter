@@ -1,1 +1,8 @@
+<% @drafts.each do |draft| %>
+	<ul>
+		<li> <%= link_to draft.id, edit_draft_path(draft) %> </li>
+	</ul>
+<% end %>
+
+
 <%= link_to "New Draft", new_draft_path, :class=> "btn btn-default" %>
