@@ -84,10 +84,9 @@ RSpec.describe Pick, :type => :model do
 			reggie = FactoryGirl.create(:reggie_bush)
 			draft.start()
 			pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.available_players(draft).should eq [reggie]
+			Pick.available_players(draft).should eq [reggie]
 		end
 	end
-
 end
 
 

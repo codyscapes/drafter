@@ -26,17 +26,29 @@
 
 <div class='row draft-center'>
   <div class='col-lg-2 master_list'>
-    <div id='player_list'>
 
-      <p> Master List </p>
+    <div class='row'>
+      <div class='col-lg-12'>
+        <div id='player_list'>
+          <h4 id ='master_list_header'> Master List </h4>
+            <ul>
+              <% @players.each do |player| %>
+                <li> <%= player.name %> </li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
 
-
-
-      <ul>
-        <% @players.each do |player| %>
-          <li><%= player.name %></li>
-        <% end %>
-      </ul>
+      <div class='col-lg-12'>
+        <div id='available_player_list'>
+          <h4 id ='master_list_header'> Remaining: </h4>
+            <ul>
+              <% Pick.available_players(@draft) do |player| %>
+                <li> <%= player.name %> </li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
 
 
     </div>

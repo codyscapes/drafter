@@ -8,10 +8,7 @@ class Pick < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :draft
 
-	attr_reader :draft_object, :player_object
-
-
-	def available_players(draft_var)
+	def self.available_players(draft_var)
 		draft_var.update_available_players(draft_var)
 	end
 
