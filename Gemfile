@@ -13,6 +13,7 @@ gem 'jscrollpane-rails'
 gem 'mwheelintent-rails'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'textacular'
+gem 'ember-rails'
 
 group :development do
   gem 'better_errors'

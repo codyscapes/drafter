@@ -16,10 +16,11 @@ class DraftsController < ApplicationController
   end
 
   def update
-    redirect_to session.delete(:return_to)
+    # redirect_to session.delete(:return_to)
     @draft = Draft.find(params[:id])
-    @draft = Draft.update(draft_params)
-    session[:return_to] = request.referer
+    @draft.update(draft_params)
+    redirect_to draft_path(@draft)
+    # session[:return_to] = request.referer
   end
 
   def create
