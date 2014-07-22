@@ -12,6 +12,7 @@ gem 'devise'
 gem 'jscrollpane-rails'
 gem 'mwheelintent-rails'
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'textacular'
 
 group :development do
   gem 'better_errors'

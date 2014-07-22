@@ -43,7 +43,7 @@
         <div id='available_player_list'>
           <h4 id ='master_list_header'> Remaining: </h4>
             <ul>
-              <% Pick.available_players(@draft) do |player| %>
+              <% @available_players.each do |player| %>
                 <li> <%= player.name %> </li>
               <% end %>
             </ul>
