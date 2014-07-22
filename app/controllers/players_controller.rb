@@ -1,8 +1,12 @@
 class PlayersController < ApplicationController
   def index
-    @player = Player.all
-    @master_players = @player.master
-    @copied_players = @player.copy
+    if params[:query]
+      @players = Player.basic_search(params[:query])
+    else
+      @players = Player.all
+    end
+    @master_players = @players.master
+    @copied_players = @players.copy
   end
 
   def show

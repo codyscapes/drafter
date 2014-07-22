@@ -97,6 +97,10 @@
 		height: 350px;
 	}
 
+	#player_index_list {
+		font-size: 15px;
+	}
+
 	#available_player_list {
 		font-size: 15px;
 		height: 300px;

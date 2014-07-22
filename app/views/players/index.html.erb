@@ -1,15 +1,24 @@
-
+<h1> Players </h1>
 <div class='row'>
 	<div class='col-lg-6'>
-		<h2> Master List: </h2>
-		<% @master_players.each do |player| %>
-			<ul id='player_list'>
-				<li>
-					<%= link_to player.name, edit_player_path(player) %></br>
-				</li>
-					<p class='under_player_options'> <%= link_to 'Edit Player', edit_player_path(player), :class => "btn btn-info" %><%= link_to 'Remove Player', player, method: :delete, :class => "btn btn-danger",  data: { confirm: 'Are you sure?' } %> </p>
-			</ul>
-		<% end %>
+		<form action='/players?query' method='get' id='search'>
+			  <input id="search" type='text' name='query'>
+			  <button> Search players</button>
+		</form>
+
+			<h2> Master List: </h2>
+
+
+			<% @master_players.each do |player| %>
+				<ul id='player_index_list'>
+					<li>
+						<%= link_to player.name, edit_player_path(player) %></br>
+					</li>
+						<p class='under_player_options'> <%= link_to 'Edit Player', edit_player_path(player), :class => "btn btn-info" %><%= link_to 'Remove Player', player, method: :delete, :class => "btn btn-danger",  data: { confirm: 'Are you sure?' } %> </p>
+				</ul>
+			<% end %>
+
+
 	</div>
 
 	<div class='col-lg-6'>
