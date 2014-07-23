@@ -4,12 +4,11 @@ class Draft < ActiveRecord::Base
 	has_many :picks
 	has_many :players, through: :picks
 
-	attr_reader :available_players, :drafted_players, :order, :teams, :current_pick, :rounds, :rounds, :picked_players
+	attr_reader :order, :teams, :current_pick, :rounds, :rounds, :picked_players
 
 	before_save :start
 
 	def start
-		@available_players = []
 		@drafted_players = []
 		@order = []
 		@teams = []
@@ -17,7 +16,6 @@ class Draft < ActiveRecord::Base
 		@rounds = 16
 
 		self.set_teams
-		self.set_available_players
 		self.set_order
 	end
 
@@ -31,10 +29,26 @@ class Draft < ActiveRecord::Base
 		@teams
 	end
 
-	def set_available_players
+	def available_players
+		@drafted_players = self.drafted_players
+		@available_players = []
+
 		Player.all.each do |player|
-			@available_players << player
+			if drafted_players.index(player) == nil
+				@available_players << player
+			end
 		end
+			@available_players
+	end
+
+	def drafted_players
+		@drafted_players = []
+		Pick.all.each do |pick|
+			if pick.draft_id == self.id
+				@drafted_players << pick.player
+			end
+		end
+		@drafted_players
 	end
 
 	def set_order

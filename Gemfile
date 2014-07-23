@@ -14,6 +14,7 @@ gem 'mwheelintent-rails'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'textacular'
 gem 'ember-rails'
+gem 'ember-source'
 
 group :development do
   gem 'better_errors'

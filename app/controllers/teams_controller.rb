@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   def index
-    @template_teams = Team.all.where(draft_id: 0)
-    @copied_teams = Team.all.where(draft_id: 2)
+    @template_teams = Team.master
+    @copied_teams = Team.all
   end
 
   def show

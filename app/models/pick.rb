@@ -8,9 +8,10 @@ class Pick < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :draft
 
-	def self.available_players(draft_var)
-		draft_var.update_available_players(draft_var)
-	end
+
+	# def self.available_players(draft_var)
+	# 	draft_var.update_available_players(draft_var)
+	# end
 
 
 # Both of the tests below are being taken out because I cannot get the draft to work.

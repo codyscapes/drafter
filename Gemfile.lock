@@ -209,6 +209,7 @@ DEPENDENCIES
   database_cleaner
   devise
   ember-rails
+  ember-source
   factory_girl_rails
   jquery-rails
   jscrollpane-rails
