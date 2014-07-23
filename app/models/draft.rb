@@ -68,20 +68,6 @@ class Draft < ActiveRecord::Base
 		@order
 	end
 
-	def update_available_players(draft)
-
-		@available_players.each do |player|
-			Pick.all.each do |pick|
-				if pick.player == player
-					@drafted_players << player
-					@available_players.delete(player)
-				end
-			end
-		end
-
-		@available_players
-
-	end
 
 
 
