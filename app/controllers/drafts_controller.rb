@@ -4,10 +4,12 @@ class DraftsController < ApplicationController
   end
 
   def show
+    @players = Player.all
     @draft = Draft.find(params[:id])
     @draft.start
-    @players = Player.all
-    @available_players = Pick.available_players(@draft)
+    @teams = @draft.teams
+    @available_players = @draft.available_players
+    @drafted_players = @draft.drafted_players
     @best_available = @draft.best_available
   end
 

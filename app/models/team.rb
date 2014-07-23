@@ -4,7 +4,7 @@ class Team < ActiveRecord::Base
 	has_many :picks
 	has_many :players, through: :picks
 
-
-  scope :master, -> { where(draft_id: 0) }
+  scope :master, -> { where(master: true) }
+  scope :copy, -> { where(master: false) }
 
 end

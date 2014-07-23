@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   def index
     @template_teams = Team.master
-    @copied_teams = Team.all
+    @copied_teams = Team.copy
   end
 
   def show
@@ -38,7 +38,7 @@ class TeamsController < ApplicationController
 private
 
   def team_params
-    params.require(:team).permit(:team_name, :draft_position, :draft_id)
+    params.require(:team).permit(:team_name, :draft_position, :draft_id, :master)
   end
 
 end

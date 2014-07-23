@@ -20,7 +20,7 @@ class Draft < ActiveRecord::Base
 	end
 
 	def set_teams
-		Team.where(draft_id: 0).each do |team|
+		Team.where(master: true).each do |team|
 			if team.draft_position <= self.number_of_teams
 				new_team = Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id)
 				@teams << new_team
@@ -72,7 +72,6 @@ class Draft < ActiveRecord::Base
 
 
   def best_available
-
     best_players_available = []
 
     if self.ranking_method == 'beer_value'
@@ -80,7 +79,6 @@ class Draft < ActiveRecord::Base
     end
 
     return best_players_available[0], best_players_available[1], best_players_available[2]
-
   end
 
 end
