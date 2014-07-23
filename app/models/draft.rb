@@ -6,7 +6,7 @@ class Draft < ActiveRecord::Base
 
 	attr_reader :order, :teams, :current_pick, :rounds, :rounds, :picked_players
 
-	before_save :start
+	after_save :set_teams
 
 	def start
 		@drafted_players = []
@@ -22,8 +22,16 @@ class Draft < ActiveRecord::Base
 	def set_teams
 		Team.where(master: true).each do |team|
 			if team.draft_position <= self.number_of_teams
-				new_team = Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id)
-				@teams << new_team
+				Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id, :master => false)
+			end
+		end
+	end
+
+	def teams
+		@teams = []
+		Team.all.each do |team|
+			if team.draft_id == self.id
+				@teams << team
 			end
 		end
 		@teams

@@ -6,7 +6,6 @@ class DraftsController < ApplicationController
   def show
     @players = Player.all
     @draft = Draft.find(params[:id])
-    @draft.start
     @teams = @draft.teams
     @available_players = @draft.available_players
     @drafted_players = @draft.drafted_players
