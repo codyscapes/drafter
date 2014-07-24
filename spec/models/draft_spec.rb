@@ -6,6 +6,28 @@ RSpec.describe Draft, :type => :model do
 	it { should have_many :picks }
 	it { should have_many(:players).through(:picks)}
 
+	describe 'rounds' do
+		it 'should have a set number of rounds' do
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.rounds.should eq 16
+		end
+	end
+
+	describe 'current_pick' do
+		it 'should have a current_pick' do
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.current_pick.should eq 1
+		end
+	end
+
+	describe 'updraft' do
+		it 'should increase current_pick by 1' do
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.updraft
+			draft.current_pick.should eq 2
+		end
+	end
+
 	# describe 'drafted players' do
 	# 	it 'should return all players drafted' do
 	# 		cam = FactoryGirl.create(:player)

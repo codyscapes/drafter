@@ -7,6 +7,7 @@ class DraftsController < ApplicationController
     @players = Player.all
     @draft = Draft.find(params[:id])
     @teams = @draft.teams
+    @order = @draft.set_order
     @available_players = @draft.available_players
     @drafted_players = @draft.drafted_players
     @best_available = @draft.best_available
@@ -43,7 +44,7 @@ class DraftsController < ApplicationController
 private
 
   def draft_params
-    params.require(:draft).permit(:draft_position, :number_of_teams, :PPTD, :PPR, :Number_of_starting_QBs, :Number_of_starting_HBs, :Number_of_starting_WRs, :Number_of_starting_FLEX, :draft_type, :keeper, :ranking_method)
+    params.require(:draft).permit(:draft_position, :number_of_teams, :PPTD, :PPR, :Number_of_starting_QBs, :Number_of_starting_HBs, :Number_of_starting_WRs, :Number_of_starting_FLEX, :draft_type, :keeper, :ranking_method, :rounds, :current_pick)
   end
 
   def player_params

@@ -4,20 +4,9 @@ class Draft < ActiveRecord::Base
 	has_many :picks
 	has_many :players, through: :picks
 
-	attr_reader :order, :teams, :current_pick, :rounds, :rounds, :picked_players
+	attr_reader :order, :teams
 
 	after_save :set_teams
-
-	def start
-		@drafted_players = []
-		@order = []
-		@teams = []
-		@current_pick = 1
-		@rounds = 16
-
-		self.set_teams
-		self.set_order
-	end
 
 	def set_teams
 		Team.where(master: true).each do |team|
@@ -28,13 +17,13 @@ class Draft < ActiveRecord::Base
 	end
 
 	def teams
-		@teams = []
+		teams = []
 		Team.all.each do |team|
 			if team.draft_id == self.id
-				@teams << team
+				teams << team
 			end
 		end
-		@teams
+		teams
 	end
 
 	def available_players
@@ -60,20 +49,25 @@ class Draft < ActiveRecord::Base
 	end
 
 	def set_order
-		@rounds.times do |number|
+		@order = []
+		self.rounds.times do |number|
 			if number.even?
-				@teams.each do |team|
+				self.teams.each do |team|
 					@order << team
 				end
 			end
 
 			if number.odd?
-				@teams.reverse.each do |team|
+				self.teams.reverse.each do |team|
 					@order << team
 				end
 			end
 		end
 		@order
+	end
+
+	def updraft
+		self.current_pick += 1
 	end
 
 
