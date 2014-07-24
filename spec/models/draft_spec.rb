@@ -28,6 +28,17 @@ RSpec.describe Draft, :type => :model do
 		end
 	end
 
+
+
+
+	# describe 'next_round' do
+	# 	it 'should return the current team's next pick  do
+	# 		draft = FactoryGirl.create(:draft)
+	# 		draft.next_round.should eq
+	# 	end
+	# end
+
+
 	# describe 'drafted players' do
 	# 	it 'should return all players drafted' do
 	# 		cam = FactoryGirl.create(:player)
