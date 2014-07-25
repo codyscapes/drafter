@@ -28,15 +28,62 @@ RSpec.describe Draft, :type => :model do
 		end
 	end
 
+	describe 'current_' do
+		it 'should return the current round of the draft when given the round parameter' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_two = FactoryGirl.create(:team_three)
+			team_two = FactoryGirl.create(:team_four)
+			team_two = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 5
+			draft.current_('round').should eq 1
+		end
 
+		it 'should return the current round of the draft when given the round parameter' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_two = FactoryGirl.create(:team_three)
+			team_two = FactoryGirl.create(:team_four)
+			team_two = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 7
+			draft.current_('round').should eq 2
+		end
 
+		it 'should return the current round of the draft when given the round parameter' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_two = FactoryGirl.create(:team_three)
+			team_two = FactoryGirl.create(:team_four)
+			team_two = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 26
+			draft.current_('round').should eq 6
+		end
 
-	# describe 'next_round' do
-	# 	it 'should return the current team's next pick  do
-	# 		draft = FactoryGirl.create(:draft)
-	# 		draft.next_round.should eq
-	# 	end
-	# end
+		it 'should return the current pick of the draft when given the pick parameter' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_two = FactoryGirl.create(:team_three)
+			team_two = FactoryGirl.create(:team_four)
+			team_two = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 5
+			draft.current_('pick').should eq 5
+		end
+
+		it 'should return the current pick of the draft when given the pick parameter' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_two = FactoryGirl.create(:team_three)
+			team_two = FactoryGirl.create(:team_four)
+			team_two = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 9
+			draft.current_('pick').should eq 4
+		end
+	end
 
 
 	# describe 'drafted players' do
@@ -47,7 +94,7 @@ RSpec.describe Draft, :type => :model do
 	# 		team_two = FactoryGirl.create(:team_two)
 	# 		draft = FactoryGirl.create(:two_team_draft)
 	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-	# 		draft.drafted_players.should eq [cam]
+	# 		draft.drafted_players.should eq []
 	# 	end
 	# end
 

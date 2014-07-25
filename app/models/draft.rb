@@ -1,3 +1,6 @@
+Need new way to set team id (currently using order[0]) in order to make a pick.
+
+
 class Draft < ActiveRecord::Base
 
 	has_many :teams
@@ -83,8 +86,25 @@ class Draft < ActiveRecord::Base
     return best_players_available[0], best_players_available[1], best_players_available[2]
   end
 
-  def next_round
-  	return true
+  def current_(round_or_pick)
+		results = self.current_pick.divmod(self.number_of_teams)
+
+		if round_or_pick == 'round'
+			if results[1] == 0
+				results[0]
+			else
+				results[0] + 1
+			end
+		else
+			if results[1] == 0
+				self.number_of_teams
+			else
+				results[1]
+			end
+		end
+
   end
+
+
 
 end
