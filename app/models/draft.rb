@@ -4,7 +4,19 @@ class Draft < ActiveRecord::Base
 	has_many :picks
 	has_many :players, through: :picks
 
-	attr_reader :order, :teams
+	validates :draft_position, :presence => true
+	validates :number_of_teams, :presence => true
+	validates :PPTD, :presence => true
+	validates :PPR, :presence => true
+	validates :Number_of_starting_QBs, :presence => true
+	validates :Number_of_starting_HBs, :presence => true
+	validates :Number_of_starting_WRs, :presence => true
+	validates :Number_of_starting_FLEX, :presence => true
+	validates :draft_type, :presence => true
+	validates :keeper, :presence => true
+	validates :ranking_method, :presence => true
+	validates :rounds, :presence => true
+	validates :current_pick, :presence => true
 
 	after_save :set_teams
 
