@@ -1,6 +1,3 @@
-Need new way to set team id (currently using order[0]) in order to make a pick.
-
-
 class Draft < ActiveRecord::Base
 
 	has_many :teams
@@ -18,6 +15,26 @@ class Draft < ActiveRecord::Base
 			end
 		end
 	end
+
+	def team_at(pick)
+		return self.set_order[pick - 1]
+	end
+
+	# def team_at(pick)
+	# 	if current_('round').even?
+	# 		self.teams.reverse_each do |team|
+	# 			if team.draft_position == snake_pick(team)
+	# 				return team
+	# 			end
+	# 		end
+	# 	else
+	# 		self.teams.each do |team|
+	# 			if team.draft_position == current('pick')
+	# 				return team
+	# 			end
+	# 		end
+	# 	end
+	# end
 
 	def teams
 		teams = []
@@ -73,9 +90,6 @@ class Draft < ActiveRecord::Base
 		self.current_pick += 1
 	end
 
-
-
-
   def best_available
     best_players_available = []
 
@@ -89,22 +103,22 @@ class Draft < ActiveRecord::Base
   def current_(round_or_pick)
 		results = self.current_pick.divmod(self.number_of_teams)
 
+		current_round = results[0]
+		current_pick = results[1]
+
 		if round_or_pick == 'round'
-			if results[1] == 0
-				results[0]
+			if current_pick == 0
+				current_round
 			else
-				results[0] + 1
+				current_round + 1
 			end
 		else
-			if results[1] == 0
+			if current_pick == 0
 				self.number_of_teams
 			else
-				results[1]
+				current_pick
 			end
 		end
-
   end
-
-
 
 end

@@ -76,27 +76,61 @@ RSpec.describe Draft, :type => :model do
 		it 'should return the current pick of the draft when given the pick parameter' do
 			team_one = FactoryGirl.create(:team)
 			team_two = FactoryGirl.create(:team_two)
-			team_two = FactoryGirl.create(:team_three)
-			team_two = FactoryGirl.create(:team_four)
-			team_two = FactoryGirl.create(:team_five)
+			team_three = FactoryGirl.create(:team_three)
+			team_four = FactoryGirl.create(:team_four)
+			team_five = FactoryGirl.create(:team_five)
 			draft = FactoryGirl.create(:five_team_draft)
 			draft.current_pick = 9
 			draft.current_('pick').should eq 4
 		end
 	end
 
+	describe 'team_at' do
+		it 'should return the team that has the pick' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_three = FactoryGirl.create(:team_three)
+			team_four = FactoryGirl.create(:team_four)
+			team_five = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 8
+			draft.team_at(draft.current_pick).should eq draft.teams[2]
+		end
 
-	# describe 'drafted players' do
-	# 	it 'should return all players drafted' do
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		team_one = FactoryGirl.create(:team)
-	# 		team_two = FactoryGirl.create(:team_two)
-	# 		draft = FactoryGirl.create(:two_team_draft)
-	# 		pick = Pick.create(:player_id => cam.id, :team_id => draft.order[0].id, :draft_id => draft.id, :draft_position => draft.current_pick)
-	# 		draft.drafted_players.should eq []
-	# 	end
-	# end
+		it 'should return the team that has the pick' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_three = FactoryGirl.create(:team_three)
+			team_four = FactoryGirl.create(:team_four)
+			team_five = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 17
+			draft.team_at(draft.current_pick).should eq draft.teams[3]
+		end
+
+		it 'should return the team that has the pick' do
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			team_three = FactoryGirl.create(:team_three)
+			team_four = FactoryGirl.create(:team_four)
+			team_five = FactoryGirl.create(:team_five)
+			draft = FactoryGirl.create(:five_team_draft)
+			draft.current_pick = 22
+			draft.team_at(draft.current_pick).should eq draft.teams[1]
+		end
+	end
+
+	describe 'drafted players' do
+		it 'should return all players drafted' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
+			draft.drafted_players.should eq [cam]
+		end
+	end
 
 	# describe 'available_players' do
 	# 	it 'should return all available_players' do
