@@ -270,5 +270,30 @@ RSpec.describe Draft, :type => :model do
 			draft.make_selection(cam)
 			draft.team_at(draft.current_pick).should eq draft.teams[1]
 		end
+
+		it 'should add the next player drafted to the next team in the order' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			draft.make_selection(reggie)
+			draft.teams[1].roster.should eq [reggie]
+		end
+
+		it 'should add the next player drafted to the next team in the order - especially when the order snakes' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			draft.make_selection(reggie)
+			draft.make_selection(forte)
+			draft.teams[1].roster.should eq [reggie, forte]
+		end
 	end
 end
