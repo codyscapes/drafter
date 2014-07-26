@@ -23,4 +23,17 @@ RSpec.describe Team, :type => :model do
 			n_team.draft_position.should eq 2
 		end
 	end
+
+	describe 'roster' do
+		it 'should return the players drafted to a particular team' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			draft.teams[0].roster.should eq [cam]
+		end
+	end
 end

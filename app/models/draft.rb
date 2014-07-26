@@ -117,4 +117,10 @@ class Draft < ActiveRecord::Base
 		end
   end
 
+  def make_selection(player)
+  	pick = Pick.create(:player_id => player.id, :team_id => self.team_at(self.current_pick).id, :draft_id => self.id, :draft_position => self.current_pick)
+  	self.updraft
+  	pick
+  end
+
 end

@@ -214,4 +214,61 @@ RSpec.describe Draft, :type => :model do
 			draft.set_order[23].should eq draft.teams[0]
 		end
 	end
+
+	describe 'make_selection' do
+		it 'should create a new pick when given a player' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			draft.current_pick.should eq 2
+		end
+
+		it 'should add the player to the team that is currently drafting' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			Pick.all[0].team_id.should eq draft.teams[0].id
+		end
+
+		it 'should add the player to the drafted array' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			draft.drafted_players.should eq [cam]
+		end
+
+		it 'should remove the player from the available_players array' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			draft.available_players.should eq [reggie, forte]
+		end
+
+		it 'should advance the current team in the order' do
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			forte = FactoryGirl.create(:matt_forte)
+			team_one = FactoryGirl.create(:team)
+			team_two = FactoryGirl.create(:team_two)
+			draft = FactoryGirl.create(:two_team_draft)
+			draft.make_selection(cam)
+			draft.team_at(draft.current_pick).should eq draft.teams[1]
+		end
+	end
 end

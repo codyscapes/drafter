@@ -14,5 +14,4 @@ class Pick < ActiveRecord::Base
 		draft.updraft
 	end
 
-
 end

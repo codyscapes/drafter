@@ -7,4 +7,15 @@ class Team < ActiveRecord::Base
   scope :master, -> { where(master: true) }
   scope :copy, -> { where(master: false) }
 
+  def roster
+  	roster = []
+
+  	Pick.all.each do |pick|
+  		if pick.team_id == self.id
+  			roster << pick.player
+  		end
+  	end
+  	roster
+  end
+
 end

@@ -73,18 +73,6 @@ RSpec.describe Pick, :type => :model do
 			pick.player.should eq cam
 		end
 	end
-
-	describe 'advance_draft' do
-		it 'should increase the current pick of the draft by 1' do
-			team1 = FactoryGirl.create(:team)
-			team2 = FactoryGirl.create(:team_two)
-			cam = FactoryGirl.create(:player)
-			reggie = FactoryGirl.create(:reggie_bush)
-			draft = FactoryGirl.create(:two_team_draft)
-			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			draft.current_pick.should eq 2
-		end
-	end
 end
 
 
