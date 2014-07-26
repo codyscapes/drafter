@@ -32,22 +32,6 @@ class Draft < ActiveRecord::Base
 		return self.set_order[pick - 1]
 	end
 
-	# def team_at(pick)
-	# 	if current_('round').even?
-	# 		self.teams.reverse_each do |team|
-	# 			if team.draft_position == snake_pick(team)
-	# 				return team
-	# 			end
-	# 		end
-	# 	else
-	# 		self.teams.each do |team|
-	# 			if team.draft_position == current('pick')
-	# 				return team
-	# 			end
-	# 		end
-	# 	end
-	# end
-
 	def teams
 		teams = []
 		Team.all.each do |team|

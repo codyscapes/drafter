@@ -7,7 +7,6 @@ class DraftsController < ApplicationController
     @players = Player.all
     @draft = Draft.find(params[:id])
     @teams = @draft.teams
-    @order = @draft.set_order
     @available_players = @draft.available_players
     @drafted_players = @draft.drafted_players
     @best_available = @draft.best_available
