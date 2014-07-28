@@ -1,0 +1,14 @@
+<h1> Picks </h1>
+
+<ul>
+<% @picks.each do |pick| %>
+	<li> <%= pick.player.name %> </li>
+
+	<ol>
+  <% pick.draft.available_players.each do |player| %> </li>
+  	<li><%= player.name %> </li>
+  <% end %>
+</ol>
+<% end %>
+</ul>
+

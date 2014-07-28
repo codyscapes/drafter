@@ -28,6 +28,10 @@ class Draft < ActiveRecord::Base
 		end
 	end
 
+	def set_players
+		Player.all
+	end
+
 	def team_at(pick)
 		return self.set_order[pick - 1]
 	end
@@ -46,7 +50,7 @@ class Draft < ActiveRecord::Base
 		@drafted_players = self.drafted_players
 		@available_players = []
 
-		Player.all.each do |player|
+		self.set_players.each do |player|
 			if drafted_players.index(player) == nil
 				@available_players << player
 			end
@@ -116,11 +120,4 @@ class Draft < ActiveRecord::Base
 			end
 		end
   end
-
-  def make_selection(player)
-  	pick = Pick.create(:player_id => player.id, :team_id => self.team_at(self.current_pick).id, :draft_id => self.id, :draft_position => self.current_pick)
-  	self.updraft
-  	pick
-  end
-
 end

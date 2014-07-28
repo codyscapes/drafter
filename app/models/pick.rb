@@ -8,10 +8,11 @@ class Pick < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :draft
 
-	# after_save :advance_draft
+	after_save :advance_draft
 
 	def advance_draft
 		self.draft.updraft
+		# self.draft.save
 	end
 
 end

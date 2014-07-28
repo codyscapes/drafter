@@ -32,7 +32,7 @@ RSpec.describe Team, :type => :model do
 			team_one = FactoryGirl.create(:team)
 			team_two = FactoryGirl.create(:team_two)
 			draft = FactoryGirl.create(:two_team_draft)
-			draft.make_selection(cam)
+			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
 			draft.teams[0].roster.should eq [cam]
 		end
 	end

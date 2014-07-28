@@ -31,6 +31,16 @@ RSpec.describe Pick, :type => :model do
   		pick.draft.should eq draft
   	end
 
+  	it "should create an association between the pick's player and the player being created in the test" do
+  		team1 = FactoryGirl.create(:team)
+  		team2 = FactoryGirl.create(:team)
+  		cam = FactoryGirl.create(:player)
+  		reggie = FactoryGirl.create(:reggie_bush)
+  		draft = FactoryGirl.create(:two_team_draft)
+  		pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
+  		pick.player.should eq cam
+  	end
+
   	it 'should be created with the correct player ID' do
 	  	team1 = FactoryGirl.create(:team)
 	  	team2 = FactoryGirl.create(:team_two)
@@ -60,29 +70,27 @@ RSpec.describe Pick, :type => :model do
 			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
 			pick.draft_position.should eq draft.draft_position
 		end
-	end
 
-	describe 'player_object' do
-		it 'should return the player object of the player being picked' do
+		it 'should run the advance_draft method after creating' do
 			team1 = FactoryGirl.create(:team)
 			team2 = FactoryGirl.create(:team_two)
 			cam = FactoryGirl.create(:player)
 			reggie = FactoryGirl.create(:reggie_bush)
 			draft = FactoryGirl.create(:two_team_draft)
 			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.player.should eq cam
+			pick.draft.draft_position.should eq draft.draft_position
 		end
 	end
 
-	describe 'draft object' do
-		it 'should return the draft associated with the pick' do
+	describe 'draft.available_players' do
+		it 'should be able to retreive the available players for the draft associated with the pick' do
 			team1 = FactoryGirl.create(:team)
 			team2 = FactoryGirl.create(:team_two)
 			cam = FactoryGirl.create(:player)
-			cam = FactoryGirl.create(:reggie_bush)
+			reggie = FactoryGirl.create(:reggie_bush)
 			draft = FactoryGirl.create(:two_team_draft)
 			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.draft.should eq draft
+			pick.draft.available_players.should eq [reggie]
 		end
 	end
 end
@@ -90,5 +98,85 @@ end
 
 
 
+	# describe 'make_selection' do
+	# 	it 'should create a new pick when given a player' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		forte = FactoryGirl.create(:matt_forte)
+	# 		team_one = FactoryGirl.create(:team)
+	# 		team_two = FactoryGirl.create(:team_two)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		draft.make_selection(cam)
+	# 		draft.current_pick.should eq 2
+	# 	end
 
+	# 	it 'should add the player to the team that is currently drafting' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		forte = FactoryGirl.create(:matt_forte)
+	# 		team_one = FactoryGirl.create(:team)
+	# 		team_two = FactoryGirl.create(:team_two)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		draft.make_selection(cam)
+	# 		Pick.all[0].team_id.should eq draft.teams[0].id
+	# 	end
+
+	# 	it 'should add the player to the drafted array' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		forte = FactoryGirl.create(:matt_forte)
+	# 		team_one = FactoryGirl.create(:team)
+	# 		team_two = FactoryGirl.create(:team_two)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		draft.make_selection(cam)
+	# 		draft.drafted_players.should eq [cam]
+	# 	end
+
+	# 	it 'should remove the player from the available_players array' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		forte = FactoryGirl.create(:matt_forte)
+	# 		team_one = FactoryGirl.create(:team)
+	# 		team_two = FactoryGirl.create(:team_two)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		draft.make_selection(cam)
+	# 		draft.available_players.should eq [reggie, forte]
+	# 	end
+
+	# 	it 'should advance the current team in the order' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		forte = FactoryGirl.create(:matt_forte)
+	# 		team_one = FactoryGirl.create(:team)
+	# 		team_two = FactoryGirl.create(:team_two)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		draft.make_selection(cam)
+	# 		draft.team_at(draft.current_pick).should eq draft.teams[1]
+	# 	end
+
+	# 	it 'should add the next player drafted to the next team in the order' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		forte = FactoryGirl.create(:matt_forte)
+	# 		team_one = FactoryGirl.create(:team)
+	# 		team_two = FactoryGirl.create(:team_two)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		draft.make_selection(cam)
+	# 		draft.make_selection(reggie)
+	# 		draft.teams[1].roster.should eq [reggie]
+	# 	end
+
+	# 	it 'should add the next player drafted to the next team in the order - especially when the order snakes' do
+	# 		cam = FactoryGirl.create(:player)
+	# 		reggie = FactoryGirl.create(:reggie_bush)
+	# 		forte = FactoryGirl.create(:matt_forte)
+	# 		team_one = FactoryGirl.create(:team)
+	# 		team_two = FactoryGirl.create(:team_two)
+	# 		draft = FactoryGirl.create(:two_team_draft)
+	# 		draft.make_selection(cam)
+	# 		draft.make_selection(reggie)
+	# 		draft.make_selection(forte)
+	# 		draft.teams[1].roster.should eq [reggie, forte]
+	# 	end
+	# end
 

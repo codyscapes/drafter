@@ -4,8 +4,8 @@ class DraftsController < ApplicationController
   end
 
   def show
-    @players = Player.all
     @draft = Draft.find(params[:id])
+    @players = @draft.set_players
     @teams = @draft.teams
     @available_players = @draft.available_players
     @drafted_players = @draft.drafted_players
