@@ -73,6 +73,18 @@ RSpec.describe Pick, :type => :model do
 			pick.player.should eq cam
 		end
 	end
+
+	describe 'draft object' do
+		it 'should return the draft associated with the pick' do
+			team1 = FactoryGirl.create(:team)
+			team2 = FactoryGirl.create(:team_two)
+			cam = FactoryGirl.create(:player)
+			cam = FactoryGirl.create(:reggie_bush)
+			draft = FactoryGirl.create(:two_team_draft)
+			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
+			pick.draft.should eq draft
+		end
+	end
 end
 
 

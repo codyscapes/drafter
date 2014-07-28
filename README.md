@@ -21,6 +21,7 @@ Current Features:
 * Tests for draft
 * Each draft loads a dynamic number of teams from the teams template.
 * Players have pictures
+* Pick is handled in draft
 
 In development:
 ===============

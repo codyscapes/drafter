@@ -10,6 +10,7 @@ class DraftsController < ApplicationController
     @available_players = @draft.available_players
     @drafted_players = @draft.drafted_players
     @best_available = @draft.best_available
+    @order = @draft.set_order
   end
 
   def edit

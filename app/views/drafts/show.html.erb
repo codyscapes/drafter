@@ -72,8 +72,8 @@
                 Bye Week: <%= player.bye_week %></br>
 
 
-                <%= link_to 'Draft', player_path(player, "player[team_id]" => @draft.order[0].id, "player[drafted]" => true), :method => :patch, :class => "btn btn-success" %>
-                <%= link_to 'Remove', player, method: :delete, :class => "btn btn-danger" %>
+                <%= link_to 'Draft', player_path(player, "player[team_id]" => @order[0].id, "player[drafted]" => true), :method => :patch, :class => "btn btn-success" %>
+                <%= link_to 'Remove', player, method: :delete, :class => "btn btn-danger", data: { confirm: 'Are you sure?' } %>
 
 
               </div>
@@ -178,7 +178,7 @@
     <div class='under_roster'>
       <p> Draft Order: </p>
       <div class='content-area order-list'>
-        <% @draft.order.each do |team| %>
+        <% @order.each do |team| %>
           <p> <%= team.team_name %></p>
         <% end %>
       </div>
