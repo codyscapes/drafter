@@ -11,8 +11,6 @@ class Pick < ActiveRecord::Base
 	after_save :advance_draft
 
 	def advance_draft
-		self.draft.updraft
-		# self.draft.save
+		draft.updraft
 	end
-
 end

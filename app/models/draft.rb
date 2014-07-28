@@ -87,7 +87,7 @@ class Draft < ActiveRecord::Base
 	end
 
 	def updraft
-		self.current_pick += 1
+		increment(:current_pick)
 	end
 
   def best_available

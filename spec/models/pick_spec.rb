@@ -78,7 +78,18 @@ RSpec.describe Pick, :type => :model do
 			reggie = FactoryGirl.create(:reggie_bush)
 			draft = FactoryGirl.create(:two_team_draft)
 			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
-			pick.draft.draft_position.should eq draft.draft_position
+			draft.reload.current_pick.should eq 2
+		end
+
+		it 'should add a pick to teams roster' do
+			team1 = FactoryGirl.create(:team)
+			team2 = FactoryGirl.create(:team_two)
+			cam = FactoryGirl.create(:player)
+			reggie = FactoryGirl.create(:reggie_bush)
+			draft = FactoryGirl.create(:two_team_draft)
+			pick = Pick.create(:player_id => cam.id, :team_id => draft.team_at(draft.current_pick).id, :draft_id => draft.id, :draft_position => draft.current_pick)
+			pick1 = Pick.create(:player_id => reggie.id, :team_id => pick.draft.team_at(pick.draft.current_pick).id, :draft_id => pick.draft.id, :draft_position => pick.draft.current_pick)
+			pick.draft.teams[1].roster.should eq draft.teams[1].roster
 		end
 	end
 
@@ -98,17 +109,7 @@ end
 
 
 
-	# describe 'make_selection' do
-	# 	it 'should create a new pick when given a player' do
-	# 		cam = FactoryGirl.create(:player)
-	# 		reggie = FactoryGirl.create(:reggie_bush)
-	# 		forte = FactoryGirl.create(:matt_forte)
-	# 		team_one = FactoryGirl.create(:team)
-	# 		team_two = FactoryGirl.create(:team_two)
-	# 		draft = FactoryGirl.create(:two_team_draft)
-	# 		draft.make_selection(cam)
-	# 		draft.current_pick.should eq 2
-	# 	end
+
 
 	# 	it 'should add the player to the team that is currently drafting' do
 	# 		cam = FactoryGirl.create(:player)
