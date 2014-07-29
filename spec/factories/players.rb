@@ -66,6 +66,16 @@ FactoryGirl.define do
   		tier 2
   	end
 
+  		factory :peyton_manning do
+			name "Peyton Manning"
+			team "Denver Broncos"
+			position "QB"
+			points_2013 425
+			beer_value 4.4
+			bye_week 4
+			tier 1
+		end
+
 	  	factory :drafted_player do
   		name "Eddie Lacy"
   		team 'Green Bay Packers'

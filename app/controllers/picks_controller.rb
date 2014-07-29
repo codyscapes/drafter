@@ -23,7 +23,11 @@ class PicksController < ApplicationController
 
   def create
     @pick = Pick.create(player_params)
-    @pick.save
+
+    respond_to do |format|
+      format.html { redirect_to drafts_url}
+      format.js
+
     redirect_to('/picks')
   end
 

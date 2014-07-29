@@ -106,19 +106,19 @@ class Draft < ActiveRecord::Base
 		results = self.current_pick.divmod(self.number_of_teams)
 
 		current_round = results[0]
-		current_pick = results[1]
+		current_pick_in_round = results[1]
 
 		if round_or_pick == 'round'
-			if current_pick == 0
+			if current_pick_in_round == 0
 				current_round
 			else
 				current_round + 1
 			end
 		else
-			if current_pick == 0
+			if current_pick_in_round == 0
 				self.number_of_teams
 			else
-				current_pick
+				current_pick_in_round
 			end
 		end
   end

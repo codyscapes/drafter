@@ -122,6 +122,8 @@ RSpec.describe Draft, :type => :model do
 	describe 'player_testing' do
 		before :each do
 			@cam = FactoryGirl.create(:player)
+			@jamaal = FactoryGirl.create(:jamaal_charles)
+			@peyton = FactoryGirl.create(:peyton_manning)
 			@reggie = FactoryGirl.create(:reggie_bush)
 			@forte = FactoryGirl.create(:matt_forte)
 			@team_one = FactoryGirl.create(:team)
@@ -139,13 +141,19 @@ RSpec.describe Draft, :type => :model do
 		describe 'available_players' do
 			it 'should return all available_players' do
 				pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
-				@draft.available_players.should eq [@reggie, @forte]
+				@draft.available_players.should eq [@jamaal, @peyton, @reggie, @forte]
 			end
 
 			it 'should not delete players from the database' do
 				pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
 				@draft.available_players
-				Player.all.should eq [@cam, @reggie, @forte]
+				Player.all.should eq [@cam, @jamaal, @peyton, @reggie, @forte]
+			end
+		end
+
+		describe 'best_available' do
+			it 'should return an array of best available players for the current team' do
+				@draft.best_available.should eq [@jamaal, @forte, @reggie]
 			end
 		end
 	end
