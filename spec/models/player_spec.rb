@@ -14,13 +14,21 @@ RSpec.describe Player, :type => :model do
   it {should have_many(:teams).through(:picks)}
   it { should have_many(:picks)}
 
-	it 'should initialize with a name' do
-		player = FactoryGirl.create(:player)
-		player.name.should eq "Cam Newton"
-	end
+  describe 'initialize tests' do
+    before :each do
+      @player = FactoryGirl.create(:player)
+    end
 
-	it 'should initialize with a position' do
-		player = FactoryGirl.create(:reggie_bush)
-		player.position.should eq 'HB'
-	end
+  	it 'should initialize with a name' do
+  		@player.name.should eq "Cam Newton"
+  	end
+
+  	it 'should initialize with a position' do
+  		@player.position.should eq 'QB'
+  	end
+
+    it 'should initialize with a team' do
+      @player.team.should eq 'Carolina Panthers'
+    end
+  end
 end
