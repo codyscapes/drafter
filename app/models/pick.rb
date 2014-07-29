@@ -8,6 +8,8 @@ class Pick < ActiveRecord::Base
 	belongs_to :player
 	belongs_to :draft
 
+	accepts_nested_attributes_for :draft
+
 	after_save :advance_draft
 
 	def advance_draft
