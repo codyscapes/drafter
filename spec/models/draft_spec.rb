@@ -20,7 +20,7 @@ RSpec.describe Draft, :type => :model do
   it { should validate_presence_of :rounds}
   it { should validate_presence_of :current_pick}
 
-	describe 'two_team_tesing' do
+	describe 'two_team_testing' do
 		before :each do
 			@team_one = FactoryGirl.create(:team)
 			@team_two = FactoryGirl.create(:team_two)
