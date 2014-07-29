@@ -90,7 +90,7 @@ FactoryGirl.define do
 	  	factory :dud do
 	  	name 'Aaron Hernandez'
 	  	team 'NY State'
-	  	position 'WR'
+	  	position 'TE'
 	  	points_2013 0
 	  	beer_value -99
 	  	bye_week 2

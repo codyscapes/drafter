@@ -29,6 +29,7 @@ RSpec.describe Team, :type => :model do
 			@cam = FactoryGirl.create(:player)
 			@reggie = FactoryGirl.create(:reggie_bush)
 			@forte = FactoryGirl.create(:matt_forte)
+			@dud = FactoryGirl.create(:dud)
 			@team_one = FactoryGirl.create(:team)
 			@team_two = FactoryGirl.create(:team_two)
 			@draft = FactoryGirl.create(:two_team_draft)
@@ -55,6 +56,31 @@ RSpec.describe Team, :type => :model do
 					pick2 = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
 					pick3 = Pick.create(:player_id => @forte.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
 					@draft.teams[0].depth('HB').should eq [@reggie, @forte]
+				end
+			end
+
+			context 'TE' do
+				it 'should return any TEs drafted by the team' do
+					pick = Pick.create(:player_id => @dud.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					@draft.teams[0].depth('TE').should eq [@dud]
+				end
+			end
+		end
+
+		describe 'depth_count' do
+			context 'QB' do
+				it 'should return all the QBs for the team' do
+					pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					@draft.teams[0].depth_count('QB').should eq 1
+				end
+			end
+
+			context 'HB' do
+				it 'should return all the QBs for the team' do
+					pick = Pick.create(:player_id => @reggie.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					pick2 = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					pick3 = Pick.create(:player_id => @forte.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					@draft.teams[0].depth_count('HB').should eq 2
 				end
 			end
 		end
