@@ -16,6 +16,7 @@ RSpec.describe Pick, :type => :model do
   		@team2 = FactoryGirl.create(:team_two)
   		@cam = FactoryGirl.create(:player)
   		@reggie = FactoryGirl.create(:reggie_bush)
+      @peyton = FactoryGirl.create(:peyton_manning)
   		@draft = FactoryGirl.create(:two_team_draft)
   		@pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
   	end
@@ -45,11 +46,16 @@ RSpec.describe Pick, :type => :model do
 		end
 
 		it 'should run the advance_draft method after creating' do
-			@draft.reload.current_pick.should eq 2
+			@pick.draft.current_pick.should eq 2
 		end
 
+    it 'should show that the second pick in the draft was selected second' do
+      pick2 = Pick.create(:player_id => @reggie.id, :team_id => @pick.draft.team_at(@pick.draft.current_pick).id, :draft_id => @pick.draft.id, :draft_position => @pick.draft.current_pick)
+      pick2.draft_position.should eq 2
+    end
+
 		it "should add the second pick to second team's roster" do
-			pick1 = Pick.create(:player_id => @reggie.id, :team_id => @pick.draft.team_at(@pick.draft.current_pick).id, :draft_id => @pick.draft.id, :draft_position => @pick.draft.current_pick)
+			pick2 = Pick.create(:player_id => @reggie.id, :team_id => @pick.draft.team_at(@pick.draft.current_pick).id, :draft_id => @pick.draft.id, :draft_position => @pick.draft.current_pick)
 			@pick.draft.teams[1].roster.should eq @draft.teams[1].roster
 		end
 	end
