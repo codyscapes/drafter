@@ -18,4 +18,16 @@ class Team < ActiveRecord::Base
   	roster
   end
 
+  def depth(position)
+    qbs = []
+
+    self.roster.each do |player|
+      print player.position
+      if player.position == position
+        qbs << player
+      end
+    end
+    qbs
+  end
+
 end
