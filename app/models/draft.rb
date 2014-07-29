@@ -4,6 +4,8 @@ class Draft < ActiveRecord::Base
 	has_many :picks
 	has_many :players, through: :picks
 
+	accepts_nested_attributes_for :picks
+
 	validates :draft_position, :presence => true
 	validates :number_of_teams, :presence => true
 	validates :PPTD, :presence => true

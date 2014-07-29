@@ -19,7 +19,6 @@ class PicksController < ApplicationController
 
   def new
     @pick = Pick.new
-    render('new.html.erb')
   end
 
   def create

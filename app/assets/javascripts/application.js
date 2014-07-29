@@ -17,11 +17,7 @@
 //= require jquery.mwheelintent
 //= require jquery.jscrollpane
 
-$('.content-area').jScrollPane({
-	horizontalGutter:5,
-	verticalGutter:5,
-	'showArrows': false
-});
+
 
 
 
