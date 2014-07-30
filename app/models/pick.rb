@@ -14,5 +14,6 @@ class Pick < ActiveRecord::Base
 
 	def advance_draft
 		draft.updraft
+		draft.save
 	end
 end

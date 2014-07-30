@@ -22,6 +22,8 @@ RSpec.describe Draft, :type => :model do
 
 	describe 'two_team_testing' do
 		before :each do
+			@cam = FactoryGirl.create(:player)
+			@reggie = FactoryGirl.create(:reggie_bush)
 			@team_one = FactoryGirl.create(:team)
 			@team_two = FactoryGirl.create(:team_two)
 			@draft = FactoryGirl.create(:two_team_draft)
@@ -59,6 +61,19 @@ RSpec.describe Draft, :type => :model do
 			it 'should increase current_pick by 1' do
 				@draft.updraft
 				@draft.current_pick.should eq 2
+			end
+		end
+
+		describe 'current_pick' do
+			it 'should return the current_pick' do
+				pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+				@draft.reload.current_pick.should eq 2
+			end
+
+			it 'should return the current_pick of 3 after two players have been drafted' do
+				pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+				pick = Pick.create(:player_id => @reggie.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+				@draft.reload.current_pick.should eq 3
 			end
 		end
 	end
@@ -117,7 +132,6 @@ RSpec.describe Draft, :type => :model do
 			end
 		end
 	end
-
 
 	describe 'player_testing' do
 		before :each do
@@ -199,6 +213,11 @@ RSpec.describe Draft, :type => :model do
 			context '24th pick' do
 				it 'in a 12 team draft, the 24th pick belongs to team_one' do
 					@draft.set_order[23].should eq @draft.teams[0]
+				end
+			end
+			context '30th pick' do
+				it 'in a 12 team draft, the 30th pick belongs to team_seven' do
+					@draft.set_order[6].should eq @draft.teams[6]
 				end
 			end
 		end
