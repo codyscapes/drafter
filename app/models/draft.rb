@@ -128,7 +128,7 @@ class Draft < ActiveRecord::Base
   end
 
   def advance_draft
-  	player_to_be_drafted = self.best_available[0]
+  	player_to_be_drafted = Best_available.find(self)
   	n_pick = Pick.create(:player_id => player_to_be_drafted.id, :team_id => self.team_at(self.current_pick).id, :draft_id => self.id, :draft_position => self.current_pick)
   end
 

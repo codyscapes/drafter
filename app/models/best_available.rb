@@ -1,12 +1,23 @@
 class Best_available
 
-	# def self.find(draft)
+	def self.find(draft)
+		result = ''
 
-	# 	current_team = draft.team_at(draft.current_pick)
+		if draft.ranking_method == 'beer_value'
+			result = self.find_beer(draft)
+		end
 
-	# 	draft.available_players.each do
-	# 		if current_team.
+		result
 
-	# end
+	end
 
+	def self.find_beer(draft)
+		if draft.team_at(draft.current_pick).roster.length == 0
+			best_players_available = []
+			best_players_available = draft.available_players.sort { |b,a| a.beer_value <=> b.beer_value }
+			return best_players_available[0]
+		else
+			return self.find_beer_and_analyze_roster(draft)
+		end
+	end
 end

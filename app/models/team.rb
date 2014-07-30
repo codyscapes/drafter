@@ -27,6 +27,7 @@ class Team < ActiveRecord::Base
       end
     end
     players
+
   end
 
   def depth_count(position)
