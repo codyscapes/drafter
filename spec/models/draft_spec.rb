@@ -35,6 +35,21 @@ RSpec.describe Draft, :type => :model do
 			end
 		end
 
+		describe 'user_turn' do
+			context 'true' do
+				it "should return true if it is the user's turn" do
+					@draft.user_turn.should eq true
+				end
+			end
+
+			context 'false' do
+				it "should return false if it is not the user's turn" do
+					pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					@draft.reload.user_turn.should eq false
+				end
+			end
+		end
+
 		describe 'set_teams' do
 			it 'should create teams in the database after initializing' do
 				Team.all.count.should eq 4
@@ -174,6 +189,10 @@ RSpec.describe Draft, :type => :model do
 
 	describe 'twelve_team_testing' do
 		before :each do
+			@cam = FactoryGirl.create(:player)
+			@jamaal = FactoryGirl.create(:jamaal_charles)
+			@forte = FactoryGirl.create(:matt_forte)
+			@peyton = FactoryGirl.create(:peyton_manning)
 			@team = FactoryGirl.create(:team)
 			@team2 = FactoryGirl.create(:team_two)
 			@team3 = FactoryGirl.create(:team_three)
@@ -219,6 +238,12 @@ RSpec.describe Draft, :type => :model do
 				it 'in a 12 team draft, the 30th pick belongs to team_seven' do
 					@draft.set_order[6].should eq @draft.teams[6]
 				end
+			end
+		end
+		describe 'advance_draft' do
+			it 'should advance a draft by automatically selecting the next best player' do
+				@draft.advance_draft
+				@draft.reload.drafted_players.should eq [@jamaal]
 			end
 		end
 	end

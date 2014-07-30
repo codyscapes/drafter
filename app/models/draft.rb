@@ -122,4 +122,14 @@ class Draft < ActiveRecord::Base
 			end
 		end
   end
+
+  def user_turn
+  	return self.current_pick == self.draft_position
+  end
+
+  def advance_draft
+  	player_to_be_drafted = self.best_available[0]
+  	n_pick = Pick.create(:player_id => player_to_be_drafted.id, :team_id => self.team_at(self.current_pick).id, :draft_id => self.id, :draft_position => self.current_pick)
+  end
+
 end
