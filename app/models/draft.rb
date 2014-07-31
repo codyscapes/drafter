@@ -73,6 +73,7 @@ class Draft < ActiveRecord::Base
 	def set_order
 		@order = []
 		self.rounds.times do |number|
+
 			if number.even?
 				self.teams.each do |team|
 					@order << team

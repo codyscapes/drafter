@@ -33,4 +33,8 @@ class Team < ActiveRecord::Base
   def depth_count(position)
     self.depth(position).length
   end
+
+  def flex_count
+    return (depth_count('HB') + depth_count('WR') + depth_count('TE'))
+  end
 end
