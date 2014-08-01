@@ -20,7 +20,7 @@ class Draft < ActiveRecord::Base
 	validates :rounds, :presence => true
 	validates :current_pick, :presence => true
 
-	after_save :set_teams
+	after_create :set_teams
 
 	def set_teams
 		@teams = []
