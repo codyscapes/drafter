@@ -30,6 +30,13 @@ RSpec.describe Draft, :type => :model do
 			@draft = FactoryGirl.create(:two_team_draft)
 		end
 
+		# describe 'teams' do
+		# 	it 'should return an array with two teams' do
+		# 		@draft.reload.teams.length.should eq 2
+		# 	end
+		# end
+
+
 		# describe 'rounds' do
 		# 	it 'should have a set number of rounds' do
 		# 		@draft.rounds.should eq 16
@@ -80,29 +87,41 @@ RSpec.describe Draft, :type => :model do
 		# 	end
 		# end
 
-		# describe 'current_pick' do
-		# 	it 'should return the current_pick' do
-		# 		pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
-		# 		@draft.reload.current_pick.should eq 2
-		# 	end
+		describe 'current_pick' do
+			it 'should return the current_pick' do
+				pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+				@draft.reload.current_pick.should eq 2
+			end
 
-		# 	it 'should return the current_pick of 3 after two players have been drafted' do
-		# 		pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
-		# 		pick1 = Pick.create(:player_id => @reggie.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
-		# 		@draft.reload.current_pick.should eq 3
-		# 	end
-		# end
+			it 'should return the current_pick of 3 after two players have been drafted' do
+				pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+				pick1 = Pick.create(:player_id => @reggie.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+				@draft.reload.current_pick.should eq 3
+			end
+		end
 
 		describe 'set_order' do
 			context "3rd pick" do
-				it 'in a two team draft, the third pick belongs to team two' do
+				it 'in a two team draft, the third pick should initialize with a current pick of 3' do
 					pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
 					pick2 = Pick.create(:player_id => @reggie.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.reload.current_pick)
+					@draft.reload.current_pick.should eq 3
+				end
+			end
 
-					# print @draft.reload.current_pick    =  3
-					print @draft.set_order[3].team_name
+			context '3rd pick' do
+				it 'in a two team draft, with draft.current_pick set to three, the self.teams method should only return two teams' do
+					pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					pick2 = Pick.create(:player_id => @reggie.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.reload.current_pick)
+					@draft.reload.teams.length.should eq 2
+				end
+			end
 
-					@draft.reload.team_at(@draft.reload.current_pick).team_name.should eq "team_two"
+			context '3rd pick' do
+				it 'in a two team draft, with draft.current_pick set to three, the set_order function should return team_two' do
+					pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+					pick2 = Pick.create(:player_id => @reggie.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.reload.current_pick)
+					@draft.reload.set_order[2].should eq @draft.reload.teams[1]
 				end
 			end
 		end
@@ -122,13 +141,13 @@ RSpec.describe Draft, :type => :model do
 		# 		end
 		# 	end
 
-			# context 'in a 2 team draft, after the first 2 picks have been made, the third pick belongs to team_three' do
-			# 	it 'should return team_two when asked for the third pick in the 2 team draft' do
-			# 		pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
-			# 		pick2 = Pick.create(:player_id => @reggie.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.reload.current_pick)
-			# 		@draft.reload.team_at(@draft.reload.current_pick).team_name.should eq 'team_two'
-			# 	end
-			# end
+		# 	context 'in a 2 team draft, after the first 2 picks have been made, the third pick belongs to team_three' do
+		# 		it 'should return team_two when asked for the third pick in the 2 team draft' do
+		# 			pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)
+		# 			pick2 = Pick.create(:player_id => @reggie.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.reload.current_pick)
+		# 			@draft.reload.team_at(@draft.reload.current_pick).team_name.should eq 'team_two'
+		# 		end
+		# 	end
 		# end
 			# it "should add the second pick to the seond team's roster" do
 			# 	pick = Pick.create(:player_id => @cam.id, :team_id => @draft.team_at(@draft.current_pick).id, :draft_id => @draft.id, :draft_position => @draft.current_pick)

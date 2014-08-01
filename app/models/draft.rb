@@ -23,11 +23,13 @@ class Draft < ActiveRecord::Base
 	after_save :set_teams
 
 	def set_teams
+		@teams = []
 		Team.where(master: true).each do |team|
 			if team.draft_position <= self.number_of_teams
-				Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id, :master => false)
+				@teams << Team.create(:team_name => team.team_name, :draft_position => team.draft_position, :draft_id => self.id, :master => false)
 			end
 		end
+		@teams
 	end
 
 	def set_players
@@ -72,16 +74,18 @@ class Draft < ActiveRecord::Base
 
 	def set_order
 		@order = []
-		self.rounds.times do |number|
+		this = self
 
+
+		self.rounds.times do |number|
 			if number.even?
-				self.teams.each do |team|
+				this.teams.each do |team|
 					@order << team
 				end
 			end
 
 			if number.odd?
-				self.teams.reverse.each do |team|
+				this.teams.reverse.each do |team|
 					@order << team
 				end
 			end
