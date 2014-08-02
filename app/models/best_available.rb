@@ -6,9 +6,7 @@ class Best_available
 		if draft.ranking_method == 'beer_value'
 			result = self.find_beer(draft)
 		end
-
 		result
-
 	end
 
 	def self.find_beer(draft)
@@ -17,7 +15,7 @@ class Best_available
 			best_players_available = draft.available_players.sort { |b,a| a.beer_value <=> b.beer_value }
 			return best_players_available[0]
 		else
-			return self.find_beer_and_analyze_roster(draft)
+			return self
 		end
 	end
 end

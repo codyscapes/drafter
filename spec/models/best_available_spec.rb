@@ -6,7 +6,7 @@ RSpec.describe Pick, :type => :model do
 		@jamaal = FactoryGirl.create(:jamaal_charles)
 		@forte = FactoryGirl.create(:matt_forte)
 		@peyton = FactoryGirl.create(:peyton_manning)
-		@team = FactoryGirl.create(:team)
+		@team1 = FactoryGirl.create(:team)
 		@team2 = FactoryGirl.create(:team_two)
 		@team3 = FactoryGirl.create(:team_three)
 		@team4 = FactoryGirl.create(:team_four)
@@ -27,5 +27,30 @@ RSpec.describe Pick, :type => :model do
 				Best_available.find(@draft).should eq @jamaal
 			end
 		end
+
+		context "The draft has started" do
+			it 'should return the AVAILABLE player with the higest beer value when there are no players on the team currently drafting' do
+				pick = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+				Best_available.find(@draft).should eq @forte
+			end
+		end
+
+		# context "The team drafting already has one QB" do
+		# 	it 'if the team already has one QB on the roster, Best_available should not suggest a QB' do
+		# 		team_one_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_two_pick_one = Pick.create(:player_id => @forte.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_three_pick_one = Pick.create(:player_id => @reggie.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_four_pick_one = Pick.create(:player_id => @.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_five_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_six_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_seven_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_eight_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_nine_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_ten_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_eleven_pick_one = Pick.create(:player_id => @jamaal.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		team_twelve_pick_one = Pick.create(:player_id => @cam.id, :team_id => @draft.reload.team_at(@draft.reload.current_pick).id, :draft_id => @draft.reload.id, :draft_position => @draft.reload.current_pick)
+		# 		Best_available.find(@draft).should eq
+		# 	end
+		# end
 	end
 end

@@ -74,18 +74,14 @@ class Draft < ActiveRecord::Base
 
 	def set_order
 		@order = []
-		this = self
-
 
 		self.rounds.times do |number|
 			if number.even?
-				this.teams.each do |team|
+				self.teams.each do |team|
 					@order << team
 				end
-			end
-
-			if number.odd?
-				this.teams.reverse.each do |team|
+			else
+				self.teams.reverse.each do |team|
 					@order << team
 				end
 			end
@@ -136,5 +132,4 @@ class Draft < ActiveRecord::Base
   	player_to_be_drafted = Best_available.find(self)
   	n_pick = Pick.create(:player_id => player_to_be_drafted.id, :team_id => self.team_at(self.current_pick).id, :draft_id => self.id, :draft_position => self.current_pick)
   end
-
 end
