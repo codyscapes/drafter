@@ -26,4 +26,4 @@ Current Features:
 
 In development:
 ===============
-* As a user, I want to click draft and have the player I chose added to my team.
+* As an admin, I want to run a model that can take a spreadsheet and create player seed in the database so that I don't have to enter all the values manually.

@@ -41,5 +41,6 @@ Player.create(name: "Giovani Bernard", team: "Cincinnati Bengals", position: "HB
 Player.create(name: "Doug Martin", team: "Tampa Bay Buccaneers", position: "HB", points_2013: 57, beer_value: 1.5, bye_week: 7)
 Player.create(name: "Zac Stacy", team: "St. Louis Rams", position: "HB", points_2013: 150, beer_value: 1.0, bye_week: 4)
 Player.create(name: "Alfred Morris", team: "Washington Redskins", position: "HB", points_2013: 160, beer_value: 1.0, bye_week: 10)
+Player.create(name: "Andre Ellington", team: "Arizona Cardinals", position: "HB", points_2013: 115, beer_value: .6, bye_week: 4)
 
 
