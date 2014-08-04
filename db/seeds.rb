@@ -29,4 +29,17 @@ Player.create(name: "Ryan Tannehill", team: "Miami Dolphins", position: "QB", po
 
 Player.create(name: "Jamaal Charles", team: "Kansas City Chiefs", position: "HB", points_2013: 295, beer_value: 6.6, bye_week: 6)
 Player.create(name: "Lesean McCoy", team: "Philadelphia Eagles", position: "HB", points_2013: 262, beer_value: 5.5, bye_week: 7)
+Player.create(name: "Adrian Peterson", team: "Minnesota Vikings", position: "HB", points_2013: 194, beer_value: 4.7, bye_week: 10)
+Player.create(name: "Matt Forte", team: "Chicago Bears", position: "HB", points_2013: 251, beer_value: 4.5, bye_week: 9)
+Player.create(name: "Eddie Lacy", team: "Green Bay Packers", position: "HB", points_2013: 198, beer_value: 3.5, bye_week: 9)
+Player.create(name: "Montee Ball", team: "Denver Broncos", position: "HB", points_2013: 42, beer_value: 2.9, bye_week: 4)
+Player.create(name: "Marshawn Lynch", team: "Seattle Seahawks", position: "HB", points_2013: 224, beer_value: 2.9, bye_week: 4)
+Player.create(name: "Arian Foster", team: "Houston Texans", position: "HB", points_2013: 81, beer_value: 2.6, bye_week: 10)
+Player.create(name: "DeMarco Murray", team: "Dallas Cowboys", position: "HB", points_2013: 189, beer_value: 2.4, bye_week: 11)
+Player.create(name: "LeVeon Bell", team: "Pittsburgh Steelers", position: "HB", points_2013: 160, beer_value: 1.8, bye_week: 12)
+Player.create(name: "Giovani Bernard", team: "Cincinnati Bengals", position: "HB", points_2013: 149, beer_value: 1.6, bye_week: 4)
+Player.create(name: "Doug Martin", team: "Tampa Bay Buccaneers", position: "HB", points_2013: 57, beer_value: 1.5, bye_week: 7)
+Player.create(name: "Zac Stacy", team: "St. Louis Rams", position: "HB", points_2013: 150, beer_value: 1.0, bye_week: 4)
+Player.create(name: "Alfred Morris", team: "Washington Redskins", position: "HB", points_2013: 160, beer_value: 1.0, bye_week: 10)
+
 
