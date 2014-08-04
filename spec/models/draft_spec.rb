@@ -299,6 +299,12 @@ RSpec.describe Draft, :type => :model do
 					@draft.set_order[6].should eq @draft.teams[6]
 				end
 			end
+			# context '13th pick' do
+			# 	it 'in a 12 team draft, the 13th pick belongs to team_twelve' do
+			# 		@draft.current_pick = 13
+			# 		@draft.reload.team_at(@draft.reload.current_pick).should eq @draft.teams[12]
+			# 	end
+			# end
 			context '24th pick' do
 				it 'in a 12 team draft, the 24th pick belongs to team_one' do
 					@draft.set_order[23].should eq @draft.teams[0]
