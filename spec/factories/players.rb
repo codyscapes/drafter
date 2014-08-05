@@ -9,7 +9,6 @@ FactoryGirl.define do
     beer_value 1.7
     bye_week 12
     adp 84
-    tier 3
 
   	factory :reggie_bush do
 	  	name 'Reggie Bush'
@@ -19,7 +18,6 @@ FactoryGirl.define do
 	    beer_value 7
 	    bye_week 8
 	    adp 30
-	    tier 6
 	  end
 
 	    factory :jamaal_charles do
@@ -30,7 +28,7 @@ FactoryGirl.define do
 	    beer_value 9
 	    bye_week 5
 	    adp 2
-	    tier 1
+
 	  end
 
 	    factory :matt_forte do
@@ -41,7 +39,7 @@ FactoryGirl.define do
 	    beer_value 8
 	    bye_week 5
 	    adp 4
-	    tier 1
+
 	  end
 
 	  	factory :ray_rice do
@@ -52,7 +50,6 @@ FactoryGirl.define do
 	  	beer_value 1
 	  	bye_week 5
 	  	adp 88
-	  	tier 8
 	  end
 
 	  	factory :eddie_lacy do
@@ -63,7 +60,6 @@ FactoryGirl.define do
   		beer_value 2
   		bye_week 5
   		adp 80
-  		tier 2
   	end
 
   		factory :peyton_manning do
@@ -73,7 +69,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 4.4
 			bye_week 4
-			tier 1
 		end
 
   		factory :HB_beer_10 do
@@ -83,7 +78,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 10
 			bye_week 4
-			tier 1
 		end
 
 
@@ -94,7 +88,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 9
 			bye_week 4
-			tier 1
 		end
 
 
@@ -105,7 +98,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 8
 			bye_week 4
-			tier 1
 		end
 
 
@@ -116,7 +108,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 7
 			bye_week 4
-			tier 1
 		end
 
 
@@ -127,7 +118,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 6
 			bye_week 4
-			tier 1
 		end
 
 
@@ -138,7 +128,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 5
 			bye_week 4
-			tier 1
 		end
 
 
@@ -149,7 +138,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 4
 			bye_week 4
-			tier 1
 		end
 
 
@@ -160,7 +148,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 3
 			bye_week 4
-			tier 1
 		end
 
 
@@ -171,7 +158,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 2
 			bye_week 4
-			tier 1
 		end
 
 
@@ -182,7 +168,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 1
 			bye_week 4
-			tier 1
 		end
 
 
@@ -193,7 +178,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 10
 			bye_week 4
-			tier 1
 		end
 
 
@@ -204,7 +188,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 9
 			bye_week 4
-			tier 1
 		end
 
   		factory :QB_beer_8 do
@@ -214,7 +197,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 8
 			bye_week 4
-			tier 1
 		end
 
   		factory :QB_beer_7 do
@@ -224,7 +206,6 @@ FactoryGirl.define do
 			points_2013 425
 			beer_value 7
 			bye_week 4
-			tier 1
 		end
 
 	  	factory :drafted_player do
@@ -235,7 +216,6 @@ FactoryGirl.define do
   		beer_value 2
   		bye_week 5
   		adp 80
-  		tier 2
   	end
 
 	  	factory :dud do
@@ -246,7 +226,6 @@ FactoryGirl.define do
 	  	beer_value -99
 	  	bye_week 2
 	  	adp 999
-	  	tier 999
 	  end
 	end
 end

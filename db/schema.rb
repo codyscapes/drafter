@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723021338) do
+ActiveRecord::Schema.define(version: 20140805191309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20140723021338) do
     t.integer  "points_2013"
     t.integer  "bye_week"
     t.integer  "adp"
-    t.integer  "tier"
     t.string   "position"
     t.float    "beer_value"
     t.string   "avatar_file_name"
