@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20140805191309) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "master"
   end
 
   create_table "teams", force: true do |t|
